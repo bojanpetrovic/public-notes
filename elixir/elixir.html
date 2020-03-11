@@ -1,0 +1,3124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-03-11 Wed 09:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elixir</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bojan Petrovic" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<style>pre.src {background-color: #303030; color: #e5e5e5;}</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Elixir</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc32a035">1. Notes</a>
+<ul>
+<li><a href="#org11166e9">1.1. File extensions</a></li>
+<li><a href="#org89c5cd2">1.2. Pattern matching</a>
+<ul>
+<li><a href="#org038e5a5">1.2.1. <code>=</code> match operator</a></li>
+<li><a href="#org9383941">1.2.2. <code>_</code></a></li>
+<li><a href="#org03fbcec">1.2.3. Pin operator <code>^</code></a></li>
+<li><a href="#orgee1085d">1.2.4. Recursive pattern matching</a></li>
+<li><a href="#orga052fdb">1.2.5. Can&rsquo;t bind keys in maps</a></li>
+</ul>
+</li>
+<li><a href="#orge40ce68">1.3. Operators</a>
+<ul>
+<li><a href="#orgc956da4">1.3.1. Comparison</a></li>
+<li><a href="#orgd3f37f3">1.3.2. Boolean operators</a></li>
+<li><a href="#org9f38b3f">1.3.3. Relaxed Boolean operators</a></li>
+<li><a href="#org6043eec">1.3.4. Arithmetic operators</a></li>
+<li><a href="#org53394eb">1.3.5. Join operators</a></li>
+<li><a href="#org7920db6">1.3.6. The <code>in</code> operator</a></li>
+<li><a href="#orgd07b22a">1.3.7. Pipe operator</a></li>
+</ul>
+</li>
+<li><a href="#orgdfd50c4">1.4. Types</a>
+<ul>
+<li><a href="#orgc9e20b9">1.4.1. Integers</a></li>
+<li><a href="#org63ef5d4">1.4.2. Booleans</a></li>
+<li><a href="#orgd5d8e51">1.4.3. Floats</a></li>
+<li><a href="#orgce4b096">1.4.4. Atoms</a>
+<ul>
+<li><a href="#orgfe1af75">1.4.4.1. What are they</a></li>
+<li><a href="#org896798d">1.4.4.2. Who else is atom</a></li>
+</ul>
+</li>
+<li><a href="#org4294dbb">1.4.5. Strings</a>
+<ul>
+<li><a href="#orgf93562a">1.4.5.1. heredoc notation</a></li>
+<li><a href="#org56c67bd">1.4.5.2. sigils</a>
+<ul>
+<li><a href="#org14eeb54">1.4.5.2.1. What it is</a></li>
+<li><a href="#orgbdbaaf2">1.4.5.2.2. Example</a></li>
+<li><a href="#orgb972ad5">1.4.5.2.3. Custom sigils</a></li>
+</ul>
+</li>
+<li><a href="#orgc535885">1.4.5.3. Strings vs Character list</a></li>
+<li><a href="#org5c8a9c1">1.4.5.4. Single-Quoted Strings - Character Lists</a>
+<ul>
+<li><a href="#org5ba7693">1.4.5.4.1. What are they</a></li>
+<li><a href="#org33a17f3">1.4.5.4.2. IEX and Character Lists</a></li>
+<li><a href="#org54df523">1.4.5.4.3. ?c notation</a></li>
+</ul>
+</li>
+<li><a href="#org0ca599b">1.4.5.5. Double-Quoted Strings - Binaries</a></li>
+</ul>
+</li>
+<li><a href="#org1fd282a">1.4.6. Ranges</a></li>
+<li><a href="#orgb0c678e">1.4.7. Regular Expressions</a></li>
+<li><a href="#org8cbb8c2">1.4.8. PID</a></li>
+<li><a href="#org49b0907">1.4.9. Collections</a>
+<ul>
+<li><a href="#org393c85b">1.4.9.1. Lists</a>
+<ul>
+<li><a href="#org42de38a">1.4.9.1.1. What they can hold?</a></li>
+<li><a href="#orgda1ae77">1.4.9.1.2. Implementation</a></li>
+<li><a href="#org398d228">1.4.9.1.3. head|tail operator</a>
+<ul>
+<li><a href="#org29fc791">1.4.9.1.3.1. Prepending elements to list</a></li>
+<li><a href="#orgb8bfc80">1.4.9.1.3.2. Extracting head from the rest</a></li>
+</ul>
+</li>
+<li><a href="#org2ebfe06">1.4.9.1.4. Other examples</a></li>
+<li><a href="#org3e0d543">1.4.9.1.5. Leave off square brackets if list is last argument</a></li>
+</ul>
+</li>
+<li><a href="#orgdf32335">1.4.9.2. Tupples</a>
+<ul>
+<li><a href="#org914d90b">1.4.9.2.1. Implementation</a></li>
+<li><a href="#org714343e">1.4.9.2.2. Example</a></li>
+<li><a href="#orgd87039c">1.4.9.2.3. Common usage</a></li>
+<li><a href="#orgebe8135">1.4.9.2.4. List vs Tupple</a></li>
+</ul>
+</li>
+<li><a href="#org3c4efde">1.4.9.3. Keyword lists</a>
+<ul>
+<li><a href="#org9f406c7">1.4.9.3.1. What it is</a></li>
+<li><a href="#org8af5abc">1.4.9.3.2. Characteristics</a></li>
+<li><a href="#org702de81">1.4.9.3.3. Where are they used</a></li>
+</ul>
+</li>
+<li><a href="#orgff07547">1.4.9.4. Maps</a>
+<ul>
+<li><a href="#org55774fc">1.4.9.4.1. Examples</a>
+<ul>
+<li><a href="#org03a717c">1.4.9.4.1.1. Defining</a></li>
+<li><a href="#orge352828">1.4.9.4.1.2. Updating key&rsquo;s value</a></li>
+<li><a href="#orga9e9342">1.4.9.4.1.3. Adding key</a></li>
+<li><a href="#org8bf07eb">1.4.9.4.1.4. Updating nested structure</a></li>
+</ul>
+</li>
+<li><a href="#orgaae6c7d">1.4.9.4.2. Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#org3626984">1.4.9.5. Sets</a></li>
+<li><a href="#org1d4e5ea">1.4.9.6. Struct</a>
+<ul>
+<li><a href="#orgc0fdb7f">1.4.9.6.1. What it is</a></li>
+<li><a href="#org8f245e2">1.4.9.6.2. Examples</a></li>
+<li><a href="#orgc44882e">1.4.9.6.3. You can match structs against maps</a></li>
+</ul>
+</li>
+<li><a href="#org648a86d">1.4.9.7. When to use map/keyword list/struct?</a>
+<ul>
+<li><a href="#orga64a546">1.4.9.7.1. Map</a></li>
+<li><a href="#orga670fdf">1.4.9.7.2. Keyword lists</a></li>
+<li><a href="#org35db6f4">1.4.9.7.3. Struct</a></li>
+</ul>
+</li>
+<li><a href="#orgae45dbf">1.4.9.8. Processing collections</a>
+<ul>
+<li><a href="#org95a2788">1.4.9.8.1. Enumerable protocol</a></li>
+<li><a href="#orgea2d08d">1.4.9.8.2. Two ways of processing collections</a></li>
+<li><a href="#orgcb61ae7">1.4.9.8.3. Sorting</a></li>
+<li><a href="#org8a57460">1.4.9.8.4. Comprehensions</a>
+<ul>
+<li><a href="#org36eac06">1.4.9.8.4.1. Example</a></li>
+<li><a href="#orgc11660e">1.4.9.8.4.2. Scope</a></li>
+<li><a href="#orge30ce8a">1.4.9.8.4.3. Return value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org53c792d">1.4.10. Binaries</a>
+<ul>
+<li><a href="#org324aaea">1.4.10.1. Example</a></li>
+<li><a href="#org6265d4e">1.4.10.2. Getting single character&rsquo;s code point</a></li>
+<li><a href="#org450f13a">1.4.10.3. Binary/Bitstring</a></li>
+</ul>
+</li>
+<li><a href="#orgfe41475">1.4.11. Date/Time</a>
+<ul>
+<li><a href="#org192b00e">1.4.11.1. About</a></li>
+<li><a href="#org9b4796a">1.4.11.2. Example</a></li>
+<li><a href="#org2a515d9">1.4.11.3. In real projects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfb09482">1.5. Functions</a>
+<ul>
+<li><a href="#org36c110f">1.5.1. Function signature when listed in help</a></li>
+<li><a href="#org5e9df90">1.5.2. Anonymous functions</a>
+<ul>
+<li><a href="#org7bd1fae">1.5.2.1. What it is</a></li>
+<li><a href="#org992dc4b">1.5.2.2. Parantheses requirements</a></li>
+<li><a href="#orga6603af">1.5.2.3. Anonymous vs Named functions</a></li>
+<li><a href="#org50480ea">1.5.2.4. Pattern matching</a></li>
+<li><a href="#orgeacf900">1.5.2.5. Shortcut</a>
+<ul>
+<li><a href="#orgf17f26b">1.5.2.5.1. Examples</a></li>
+<li><a href="#org0ba508e">1.5.2.5.2. Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcc36185">1.5.3. Named functions</a>
+<ul>
+<li><a href="#orga0f9144">1.5.3.1. What it is</a></li>
+<li><a href="#org773609b">1.5.3.2. Pattern matching</a></li>
+<li><a href="#orga2d781d">1.5.3.3. Guard clauses</a>
+<ul>
+<li><a href="#org5cb0373">1.5.3.3.1. What it is</a></li>
+<li><a href="#org5c7e1ef">1.5.3.3.2. Example</a></li>
+</ul>
+</li>
+<li><a href="#org4d8c61b">1.5.3.4. Default parameters</a>
+<ul>
+<li><a href="#orgaa378a2">1.5.3.4.1. Example</a></li>
+<li><a href="#orgd1b72f4">1.5.3.4.2. Default value</a></li>
+<li><a href="#org984031f">1.5.3.4.3. Function with default values has multiple clauses</a></li>
+</ul>
+</li>
+<li><a href="#org7c515e6">1.5.3.5. Private functions (defp)</a></li>
+<li><a href="#org4f69080">1.5.3.6. do end</a></li>
+</ul>
+</li>
+<li><a href="#orgaaa4911">1.5.4. Parantheses</a></li>
+<li><a href="#orgd1f2724">1.5.5. Functions capturing</a></li>
+</ul>
+</li>
+<li><a href="#org7000591">1.6. Control Structures</a>
+<ul>
+<li><a href="#org884f353">1.6.1. if/unless</a>
+<ul>
+<li><a href="#orgb60684f">1.6.1.1. example</a></li>
+</ul>
+</li>
+<li><a href="#org12b66c9">1.6.2. case</a>
+<ul>
+<li><a href="#org8dcea30">1.6.2.1. Example</a></li>
+<li><a href="#orgc92d282">1.6.2.2. Case supports guard clauses</a></li>
+<li><a href="#org1b56244">1.6.2.3. When to use</a></li>
+</ul>
+</li>
+<li><a href="#org5c86cb3">1.6.3. cond</a>
+<ul>
+<li><a href="#orgeaad6fc">1.6.3.1. Example</a></li>
+<li><a href="#org36247f1">1.6.3.2. When to use</a></li>
+</ul>
+</li>
+<li><a href="#orge65e535">1.6.4. with</a>
+<ul>
+<li><a href="#org5750cb5">1.6.4.1. Doesn&rsquo;t change outer scope</a></li>
+<li><a href="#orgdb75761">1.6.4.2. <code>with</code> is treated as a function</a></li>
+<li><a href="#org4c3960f">1.6.4.3. else</a></li>
+<li><a href="#org8cf2446">1.6.4.4. Using  <code>&lt;-</code> instead of <code>=</code></a></li>
+<li><a href="#orgca3ecb0">1.6.4.5. Example of when <code>with</code> simplifes things</a></li>
+</ul>
+</li>
+<li><a href="#org71f33a3">1.6.5. Summary when to use</a></li>
+</ul>
+</li>
+<li><a href="#org7c8ba12">1.7. Exceptions</a>
+<ul>
+<li><a href="#orgfb07f39">1.7.1. When to use</a></li>
+<li><a href="#org858fc2f">1.7.2. Functions that are throwing exceptions</a></li>
+</ul>
+</li>
+<li><a href="#org79c45bc">1.8. Modules</a>
+<ul>
+<li><a href="#orgab80618">1.8.1. Referencing functions</a></li>
+<li><a href="#org58c40f5">1.8.2. Module nesting</a></li>
+<li><a href="#orga193dcd">1.8.3. Directives</a>
+<ul>
+<li><a href="#orgb0f7eb9">1.8.3.1. import</a></li>
+<li><a href="#org811a2f6">1.8.3.2. alias</a></li>
+<li><a href="#org7b8030c">1.8.3.3. require</a></li>
+<li><a href="#org0d988c1">1.8.3.4. use</a></li>
+</ul>
+</li>
+<li><a href="#org2bc89fe">1.8.4. Module attributes</a></li>
+<li><a href="#orgeacdd44">1.8.5. Module names</a></li>
+</ul>
+</li>
+<li><a href="#orgaf6ba0c">1.9. Documentation</a>
+<ul>
+<li><a href="#org3ca4edc">1.9.1. Inline documentation</a></li>
+<li><a href="#org64496a8">1.9.2. Documenting modules</a></li>
+<li><a href="#org506aae2">1.9.3. Documenting functions</a></li>
+<li><a href="#org1bb2cae">1.9.4. ExDoc</a></li>
+</ul>
+</li>
+<li><a href="#orgc667115">1.10. IEX (Interactive Elixir)</a>
+<ul>
+<li><a href="#org3272496">1.10.1. Executing script to setup IEX session</a></li>
+<li><a href="#org201f256">1.10.2. How to execute script while in IEX</a></li>
+<li><a href="#orgcd448c7">1.10.3. Getting help</a></li>
+<li><a href="#org4ebfcde">1.10.4. Info about value</a></li>
+</ul>
+</li>
+<li><a href="#org5d69bf5">1.11. Code styling</a>
+<ul>
+<li><a href="#org9243184">1.11.1. Use two-column indentation and spaces (not tabs)</a></li>
+<li><a href="#orgb3cb42d">1.11.2. Functions that returns a boolean</a></li>
+<li><a href="#org05d768d">1.11.3. Functions that raise an exception</a></li>
+</ul>
+</li>
+<li><a href="#orgb183933">1.12. Scope</a>
+<ul>
+<li><a href="#org551c751">1.12.1. Types</a></li>
+</ul>
+</li>
+<li><a href="#org56edd1e">1.13. Concurrency</a>
+<ul>
+<li><a href="#orgf3b23e8">1.13.1. Actor model of concurrency</a></li>
+<li><a href="#org5c5480a">1.13.2. Linking processes</a></li>
+<li><a href="#orgbf3975b">1.13.3. Montiroing processes</a></li>
+<li><a href="#orgd347a03">1.13.4. Parallel Map</a></li>
+<li><a href="#org9c6714e">1.13.5. Nodes</a>
+<ul>
+<li><a href="#orge2a4b6d">1.13.5.1. What are they</a></li>
+<li><a href="#org20ca15a">1.13.5.2. Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0297be4">1.14. Other</a>
+<ul>
+<li><a href="#org19595db">1.14.1. Enum.reverse</a></li>
+</ul>
+</li>
+<li><a href="#org54302a3">1.15. Elixir internals</a>
+<ul>
+<li><a href="#orgf6f0795">1.15.1. Performance</a>
+<ul>
+<li><a href="#orgd5e37d8">1.15.1.1. Immutability</a></li>
+<li><a href="#org9c65f84">1.15.1.2. Garbage collection</a></li>
+<li><a href="#org41e464d">1.15.1.3. Tail-call optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfe961c4">1.16. Tools</a>
+<ul>
+<li><a href="#orgfa1b5f9">1.16.1. Mix</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9cf8a17">2. Cheatsheet</a>
+<ul>
+<li><a href="#org5bd0abc">2.1. Create projects</a></li>
+<li><a href="#org2f20a7d">2.2. Run interactive shell</a></li>
+<li><a href="#org11829e3">2.3. How to execute script while in IEX</a></li>
+<li><a href="#orgd3f0de9">2.4. PID of current process</a></li>
+<li><a href="#org38bd237">2.5. Files</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orga6280e0">2.5.0.1. Open</a></li>
+<li><a href="#org23b224f">2.5.0.2. Read</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd615b71">2.6. Map</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org068b775">2.6.0.1. Declaring</a></li>
+<li><a href="#org583e009">2.6.0.2. Accessing values</a></li>
+<li><a href="#org6aac63e">2.6.0.3. Updating</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9e95fd6">2.7. Date/Time</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org9ed73a3">2.7.0.1. Date</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org463a2f4">2.8. Strings</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org6ca258e">2.8.0.1. Concat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc32a035" class="outline-2">
+<h2 id="orgc32a035"><span class="section-number-2">1</span> Notes</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org11166e9" class="outline-3">
+<h3 id="org11166e9"><span class="section-number-3">1.1</span> File extensions</h3>
+<div class="outline-text-3" id="text-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Extension</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Where to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">.ex</td>
+<td class="org-left">intended to be compiled into bytedocdes and then run</td>
+<td class="org-left">application code</td>
+</tr>
+
+<tr>
+<td class="org-left">.exs</td>
+<td class="org-left">scripts, interpreted at execution time</td>
+<td class="org-left">test code</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org89c5cd2" class="outline-3">
+<h3 id="org89c5cd2"><span class="section-number-3">1.2</span> Pattern matching</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org038e5a5" class="outline-4">
+<h4 id="org038e5a5"><span class="section-number-4">1.2.1</span> <code>=</code> match operator</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Elixir calls <code>=</code> symbol the <b>match operator</b>.
+</p>
+
+<p>
+Joe Armstrong, Erlang&rsquo;s creator, compares the equals sign in Erlang to that
+used in algebra. When you write the equation <code>x = a + 1</code>, you are not assigning
+the value of <code>a + 1</code> to <code>x</code>. Instead, you&rsquo;re simply asserting that the
+expressions <code>x</code> and <code>a + 1</code> have the same value. If you know the value of <code>x</code>, you
+can work out the vlaue of <code>a</code>, and vice versa.
+</p>
+</div>
+</div>
+<div id="outline-container-org9383941" class="outline-4">
+<h4 id="org9383941"><span class="section-number-4">1.2.2</span> <code>_</code></h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+In some cases, you don’t care about a particular value in a pattern. It is a
+common practice to bind those values to the underscore, <code>_</code>.
+The variable <code>_</code> is special in that it can never be read from. Trying to read
+from it gives a compile error.
+</p>
+
+<p>
+We can also use underscore with variable name to declare that we won&rsquo;t need it:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">we don't care about head</span>
+<span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">len</span>([<span style="color: #7c6f64;">_head</span>| tail]), <span style="color: #83a598;">do:</span> <span style="color: #d3869b; font-weight: bold;">1</span> + len(tail)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org03fbcec" class="outline-4">
+<h4 id="org03fbcec"><span class="section-number-4">1.2.3</span> Pin operator <code>^</code></h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+If we have
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">1</span>
+[a,b] = [<span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">3</span>]
+</pre>
+</div>
+<p>
+this will bind <code>2</code> to <code>a</code>. But if we want <code>a</code> to force matching, then we use <b>pin operator</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">[^a,b] = [<span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">3</span>] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">fail, because a=1, so this expression is [1,b] = [2,3]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee1085d" class="outline-4">
+<h4 id="orgee1085d"><span class="section-number-4">1.2.4</span> Recursive pattern matching</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Instead of writing something like
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">for_location</span>([ [time, target_loc, temp, rain ] | tail], target_loc) <span style="color: #fb4934;">do</span>
+  [ [time, target_loc, temp, rain ] | for_location(tail, target_loc)
+  <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+we can write
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">for_location</span>([ <span style="color: #83a598;">head</span> = [time, target_loc, temp, rain ] | tail], target_loc) <span style="color: #fb4934;">do</span>
+  [ head | for_location(tail, target_loc)
+  <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga052fdb" class="outline-4">
+<h4 id="orga052fdb"><span class="section-number-4">1.2.5</span> Can&rsquo;t bind keys in maps</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+We can do
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">%{ <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; state} = %{ <span style="color: #d3869b; font-weight: bold;">1</span> =&gt; <span style="color: #83a598;">:ok</span>, <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; <span style="color: #83a598;">:error</span> }
+</pre>
+</div>
+<p>
+but you cannot do this:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">%{ item =&gt; <span style="color: #83a598;">:ok</span>} = %{ <span style="color: #d3869b; font-weight: bold;">1</span> =&gt; <span style="color: #83a598;">:ok</span>, <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; <span style="color: #83a598;">:error</span> }
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge40ce68" class="outline-3">
+<h3 id="orge40ce68"><span class="section-number-3">1.3</span> Operators</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgc956da4" class="outline-4">
+<h4 id="orgc956da4"><span class="section-number-4">1.3.1</span> Comparison</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">===, !=</td>
+<td class="org-left">a === b</td>
+<td class="org-left">strict euqality (1 === 1.0 is false)</td>
+</tr>
+
+<tr>
+<td class="org-left">=, !=</td>
+<td class="org-left">a == b</td>
+<td class="org-left">value equality (1 === 1.0 is true)</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;, &gt;=, &lt;, &lt;=</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">normal comparison</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd3f37f3" class="outline-4">
+<h4 id="orgd3f37f3"><span class="section-number-4">1.3.2</span> Boolean operators</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+First argument must be boolean(<code>true</code> or <code>false</code>)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">or</td>
+<td class="org-left">a or b</td>
+<td class="org-left"><code>true</code> if <code>a</code> is true; <code>b</code> otherwise</td>
+</tr>
+
+<tr>
+<td class="org-left">and</td>
+<td class="org-left">a and b</td>
+<td class="org-left"><code>false</code> if <code>a</code> is false; <code>b</code> otherwise</td>
+</tr>
+
+<tr>
+<td class="org-left">not</td>
+<td class="org-left">not a</td>
+<td class="org-left"><code>false</code> if <code>a</code> is true; <code>true</code> otherwise</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9f38b3f" class="outline-4">
+<h4 id="org9f38b3f"><span class="section-number-4">1.3.3</span> Relaxed Boolean operators</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&vert;&vert;</td>
+<td class="org-left">a &vert;&vert; b</td>
+<td class="org-left"><code>a</code> if <code>a</code> is truthy; otherwise <code>b</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&amp;&amp;</td>
+<td class="org-left">a &amp;&amp; b</td>
+<td class="org-left"><code>b</code> if <code>a</code> is truthy; otherwise <code>a</code></td>
+</tr>
+
+<tr>
+<td class="org-left">!</td>
+<td class="org-left">!a</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6043eec" class="outline-4">
+<h4 id="org6043eec"><span class="section-number-4">1.3.4</span> Arithmetic operators</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">+ - *</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">div</td>
+<td class="org-left">div(5,2)</td>
+<td class="org-left">truncates</td>
+</tr>
+
+<tr>
+<td class="org-left">rem</td>
+<td class="org-left">rem(5,2) # 1</td>
+<td class="org-left">reminder</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org53394eb" class="outline-4">
+<h4 id="org53394eb"><span class="section-number-4">1.3.5</span> Join operators</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;&gt;</td>
+<td class="org-left">binary1 &lt;&gt; binary2</td>
+<td class="org-left">concatenates two binaries</td>
+</tr>
+
+<tr>
+<td class="org-left">++</td>
+<td class="org-left">list1 ++ list2</td>
+<td class="org-left">concatenates two lists</td>
+</tr>
+
+<tr>
+<td class="org-left">--</td>
+<td class="org-left">list1 &#x2013; list2</td>
+<td class="org-left">removes elements of list 2 from a copy of list 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org7920db6" class="outline-4">
+<h4 id="org7920db6"><span class="section-number-4">1.3.6</span> The <code>in</code> operator</h4>
+<div class="outline-text-4" id="text-1-3-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">in</td>
+<td class="org-left">a in enum</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd07b22a" class="outline-4">
+<h4 id="orgd07b22a"><span class="section-number-4">1.3.7</span> Pipe operator</h4>
+<div class="outline-text-4" id="text-1-3-7">
+<p>
+The <code>|&gt;</code> operator takes the result of the expression to its left and inserts
+it as the first parameter of the function invocation to its right.
+</p>
+
+<p>
+You should always use parentheses around function parameters in pipelines.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdfd50c4" class="outline-3">
+<h3 id="orgdfd50c4"><span class="section-number-3">1.4</span> Types</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgc9e20b9" class="outline-4">
+<h4 id="orgc9e20b9"><span class="section-number-4">1.4.1</span> Integers</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+They don&rsquo;t have limit on the size.
+</p>
+</div>
+</div>
+<div id="outline-container-org63ef5d4" class="outline-4">
+<h4 id="org63ef5d4"><span class="section-number-4">1.4.2</span> Booleans</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Everything is truthy except for <code>false</code> and <code>nil</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd5d8e51" class="outline-4">
+<h4 id="orgd5d8e51"><span class="section-number-4">1.4.3</span> Floats</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+They are IEEE 754 double of precision.
+</p>
+</div>
+</div>
+<div id="outline-container-orgce4b096" class="outline-4">
+<h4 id="orgce4b096"><span class="section-number-4">1.4.4</span> Atoms</h4>
+<div class="outline-text-4" id="text-1-4-4">
+</div>
+<div id="outline-container-orgfe1af75" class="outline-5">
+<h5 id="orgfe1af75"><span class="section-number-5">1.4.4.1</span> What are they</h5>
+<div class="outline-text-5" id="text-1-4-4-1">
+<p>
+An atom&rsquo;s name is its value. Two atoms with the same name will always compare
+as being equal, even if they were created by different applications on two
+computers separated by an ocean.
+</p>
+</div>
+</div>
+<div id="outline-container-org896798d" class="outline-5">
+<h5 id="org896798d"><span class="section-number-5">1.4.4.2</span> Who else is atom</h5>
+<div class="outline-text-5" id="text-1-4-4-2">
+<p>
+The booleans <code>true</code> and <code>false</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; <span style="color: #83a598;">true</span> |&gt; is_atom
+<span style="color: #83a598;">true</span>
+iex&gt; <span style="color: #83a598;">:true</span> |&gt; is_boolean
+<span style="color: #83a598;">true</span>
+iex&gt; <span style="color: #83a598;">:true</span> === <span style="color: #83a598;">true</span>
+<span style="color: #83a598;">true</span>
+</pre>
+</div>
+
+<p>
+Names of modules in Elixir are also atoms:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; is_atom(<span style="color: #8ec07c;">MyApp.MyModule</span>)
+<span style="color: #83a598;">true</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4294dbb" class="outline-4">
+<h4 id="org4294dbb"><span class="section-number-4">1.4.5</span> Strings</h4>
+<div class="outline-text-4" id="text-1-4-5">
+</div>
+<div id="outline-container-orgf93562a" class="outline-5">
+<h5 id="orgf93562a"><span class="section-number-5">1.4.5.1</span> heredoc notation</h5>
+<div class="outline-text-5" id="text-1-4-5-1">
+<p>
+Multiline string, but without introducing new line at the beginning.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">IO</span>.write <span style="color: #b8bb26;">"""</span>
+<span style="color: #b8bb26;">my</span>
+<span style="color: #b8bb26;">string</span>
+<span style="color: #b8bb26;">        """</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org56c67bd" class="outline-5">
+<h5 id="org56c67bd"><span class="section-number-5">1.4.5.2</span> sigils</h5>
+<div class="outline-text-5" id="text-1-4-5-2">
+</div>
+<div id="outline-container-org14eeb54" class="outline-6">
+<h6 id="org14eeb54"><span class="section-number-6">1.4.5.2.1</span> What it is</h6>
+<div class="outline-text-6" id="text-1-4-5-2-1">
+<p>
+It&rsquo;s an alternative syntax for some literals.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbdbaaf2" class="outline-6">
+<h6 id="orgbdbaaf2"><span class="section-number-6">1.4.5.2.2</span> Example</h6>
+<div class="outline-text-6" id="text-1-4-5-2-2">
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; <span style="color: #fe8019;">~w</span>[<span style="color: #b8bb26;">the c#{'a'}t sat on the mat</span>]a
+[<span style="color: #83a598;">:the</span>, <span style="color: #83a598;">:cat</span>, <span style="color: #83a598;">:sat</span>, <span style="color: #83a598;">:on</span>, <span style="color: #83a598;">:the</span>, <span style="color: #83a598;">:mat</span>]
+iex&gt; <span style="color: #fe8019;">~w</span>[<span style="color: #b8bb26;">the c#{'a'}t sat on the mat</span>]c
+[<span style="color: #b8bb26;">'the'</span>, <span style="color: #b8bb26;">'cat'</span>, <span style="color: #b8bb26;">'sat'</span>, <span style="color: #b8bb26;">'on'</span>, <span style="color: #b8bb26;">'the'</span>, <span style="color: #b8bb26;">'mat'</span>]
+iex&gt; <span style="color: #fe8019;">~w</span>[<span style="color: #b8bb26;">the c#{'a'}t sat on the mat</span>]s
+[<span style="color: #b8bb26;">"the"</span>, <span style="color: #b8bb26;">"cat"</span>, <span style="color: #b8bb26;">"sat"</span>, <span style="color: #b8bb26;">"on"</span>, <span style="color: #b8bb26;">"the"</span>, <span style="color: #b8bb26;">"mat"</span>]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb972ad5" class="outline-6">
+<h6 id="orgb972ad5"><span class="section-number-6">1.4.5.2.3</span> Custom sigils</h6>
+<div class="outline-text-6" id="text-1-4-5-2-3">
+<p>
+You can define your own sigils.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">MySigils</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">sigil_u</span>(string, []), <span style="color: #83a598;">do:</span> <span style="color: #8ec07c;">String</span>.upcase(string)
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #fb4934;">import</span> <span style="color: #8ec07c;">MySigils</span>
+~u/elixir school/
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc535885" class="outline-5">
+<h5 id="orgc535885"><span class="section-number-5">1.4.5.3</span> Strings vs Character list</h5>
+<div class="outline-text-5" id="text-1-4-5-3">
+<p>
+In Elixir convention is:
+</p>
+<ul class="org-ul">
+<li>double-quoted form is <b>strings</b></li>
+<li>single-quoted form is <b>character list</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5c8a9c1" class="outline-5">
+<h5 id="org5c8a9c1"><span class="section-number-5">1.4.5.4</span> Single-Quoted Strings - Character Lists</h5>
+<div class="outline-text-5" id="text-1-4-5-4">
+</div>
+<div id="outline-container-org5ba7693" class="outline-6">
+<h6 id="org5ba7693"><span class="section-number-6">1.4.5.4.1</span> What are they</h6>
+<div class="outline-text-6" id="text-1-4-5-4-1">
+<p>
+These are called <b>character list</b> in Elixir.
+They are represented as a list of integer values, each value corresponding to
+a codepoint in the string.
+</p>
+</div>
+</div>
+<div id="outline-container-org33a17f3" class="outline-6">
+<h6 id="org33a17f3"><span class="section-number-6">1.4.5.4.2</span> IEX and Character Lists</h6>
+<div class="outline-text-6" id="text-1-4-5-4-2">
+<p>
+If all integeres in a list are printable character, IEX are gonna show it as a string:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; [ <span style="color: #d3869b; font-weight: bold;">67</span>, <span style="color: #d3869b; font-weight: bold;">65</span>, <span style="color: #d3869b; font-weight: bold;">84</span> ]
+<span style="color: #b8bb26;">'CAT'</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org54df523" class="outline-6">
+<h6 id="org54df523"><span class="section-number-6">1.4.5.4.3</span> ?c notation</h6>
+<div class="outline-text-6" id="text-1-4-5-4-3">
+<p>
+The notation <code>?c</code> returns the integer code for the character <code>c</code>. This is often
+useful when employing patterns to extract information from character lists.
+Here’s a simple module that parses the character-list representation of an
+optionally signed decimal number.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Parse</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">number</span>([ ?- | tail ]), <span style="color: #83a598;">do:</span> <span style="color: #7c6f64;">_number_digits</span>(tail, <span style="color: #d3869b; font-weight: bold;">0</span>) * -<span style="color: #d3869b; font-weight: bold;">1</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">number</span>([ ?+ | tail ]), <span style="color: #83a598;">do:</span> <span style="color: #7c6f64;">_number_digits</span>(tail, <span style="color: #d3869b; font-weight: bold;">0</span>)
+  ...
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ca599b" class="outline-5">
+<h5 id="org0ca599b"><span class="section-number-5">1.4.5.5</span> Double-Quoted Strings - Binaries</h5>
+<div class="outline-text-5" id="text-1-4-5-5">
+<p>
+The contents of a double-quoted string are stored as a consecutive sequence
+of bytes in UTF-8 encoding.
+</p>
+
+<p>
+When Elixir library documentation uses the word <code>string</code> (and most of the
+time it uses the word binary), it means double-quoted strings.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1fd282a" class="outline-4">
+<h4 id="org1fd282a"><span class="section-number-4">1.4.6</span> Ranges</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">1</span>..<span style="color: #d3869b; font-weight: bold;">100</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0c678e" class="outline-4">
+<h4 id="orgb0c678e"><span class="section-number-4">1.4.7</span> Regular Expressions</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<p>
+Perl5-compatible syntax for patterns.
+</p>
+</div>
+</div>
+<div id="outline-container-org8cbb8c2" class="outline-4">
+<h4 id="org8cbb8c2"><span class="section-number-4">1.4.8</span> PID</h4>
+<div class="outline-text-4" id="text-1-4-8">
+<p>
+It&rsquo;s reference to local or remote process.
+</p>
+</div>
+</div>
+<div id="outline-container-org49b0907" class="outline-4">
+<h4 id="org49b0907"><span class="section-number-4">1.4.9</span> Collections</h4>
+<div class="outline-text-4" id="text-1-4-9">
+</div>
+<div id="outline-container-org393c85b" class="outline-5">
+<h5 id="org393c85b"><span class="section-number-5">1.4.9.1</span> Lists</h5>
+<div class="outline-text-5" id="text-1-4-9-1">
+</div>
+<div id="outline-container-org42de38a" class="outline-6">
+<h6 id="org42de38a"><span class="section-number-6">1.4.9.1.1</span> What they can hold?</h6>
+<div class="outline-text-6" id="text-1-4-9-1-1">
+<p>
+Multiple values of multiple types.
+</p>
+
+<p>
+Values can be non-unique.
+</p>
+</div>
+</div>
+<div id="outline-container-orgda1ae77" class="outline-6">
+<h6 id="orgda1ae77"><span class="section-number-6">1.4.9.1.2</span> Implementation</h6>
+<div class="outline-text-6" id="text-1-4-9-1-2">
+<p>
+Elixir implements list collections as linked lists. This means that
+accessing the list length is an operation that will run in linear time
+(<code>O(n)</code>). For this reason, it is typically faster to prepend than to append
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; <span style="color: #83a598;">list</span> = [<span style="color: #d3869b; font-weight: bold;">3.14</span>, <span style="color: #83a598;">:pie</span>, <span style="color: #b8bb26;">"Apple"</span>]
+[<span style="color: #d3869b; font-weight: bold;">3.14</span>, <span style="color: #83a598;">:pie</span>, <span style="color: #b8bb26;">"Apple"</span>]
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">Prepending (fast)</span>
+iex&gt; [<span style="color: #b8bb26;">"&#960;"</span>] ++ list
+[<span style="color: #b8bb26;">"&#960;"</span>, <span style="color: #d3869b; font-weight: bold;">3.14</span>, <span style="color: #83a598;">:pie</span>, <span style="color: #b8bb26;">"Apple"</span>]
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">Appending (slow)</span>
+iex&gt; list ++ [<span style="color: #b8bb26;">"Cherry"</span>]
+[<span style="color: #d3869b; font-weight: bold;">3.14</span>, <span style="color: #83a598;">:pie</span>, <span style="color: #b8bb26;">"Apple"</span>, <span style="color: #b8bb26;">"Cherry"</span>]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org398d228" class="outline-6">
+<h6 id="org398d228"><span class="section-number-6">1.4.9.1.3</span> head|tail operator</h6>
+<div class="outline-text-6" id="text-1-4-9-1-3">
+</div>
+<div id="outline-container-org29fc791" class="outline-7">
+<h7 id="org29fc791"><span class="section-number-7">1.4.9.1.3.1</span> Prepending elements to list</h7>
+<div class="outline-text-7" id="text-1-4-9-1-3-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">l1</span> = [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>]
+<span style="color: #83a598;">l2</span> = [<span style="color: #d3869b; font-weight: bold;">0</span> | l1] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">l2=[0,1,2,3]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb8bfc80" class="outline-7">
+<h7 id="orgb8bfc80"><span class="section-number-7">1.4.9.1.3.2</span> Extracting head from the rest</h7>
+<div class="outline-text-7" id="text-1-4-9-1-3-2">
+<div class="org-src-container">
+<pre class="src src-elixir">[head|tail]=[<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>]
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">head: 1</span>
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">tail: [2,3]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ebfe06" class="outline-6">
+<h6 id="org2ebfe06"><span class="section-number-6">1.4.9.1.4</span> Other examples</h6>
+<div class="outline-text-6" id="text-1-4-9-1-4">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">l</span> = [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>]
+[<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>] ++ [<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">6</span>] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">concatenation</span>
+[<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>] -- [<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">4</span>] <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">difference</span>
+<span style="color: #d3869b; font-weight: bold;">1</span> <span style="color: #fb4934;">in</span> [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">membership</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3e0d543" class="outline-6">
+<h6 id="org3e0d543"><span class="section-number-6">1.4.9.1.5</span> Leave off square brackets if list is last argument</h6>
+<div class="outline-text-6" id="text-1-4-9-1-5">
+<p>
+Elixir allows us to leave off the square brackets if a keyword list is the last argument in a function call. Thus,
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">DB</span>.save record, [ {&#8203;<span style="color: #83a598;">:use_transaction</span>&#8203;, <span style="color: #83a598;">true</span>}, {&#8203;<span style="color: #83a598;">:logging</span>&#8203;, &#8203;<span style="color: #b8bb26;">"&#8203;&#8203;HIGH"</span>&#8203;} ]
+</pre>
+</div>
+<p>
+can be written more cleanly as
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">DB</span>.save record, &#8203;<span style="color: #83a598;">use_transaction:</span>&#8203; <span style="color: #83a598;">true</span>, &#8203;<span style="color: #83a598;">logging:</span>&#8203; &#8203;<span style="color: #b8bb26;">"&#8203;&#8203;HIGH"</span>&#8203;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf32335" class="outline-5">
+<h5 id="orgdf32335"><span class="section-number-5">1.4.9.2</span> Tupples</h5>
+<div class="outline-text-5" id="text-1-4-9-2">
+</div>
+<div id="outline-container-org914d90b" class="outline-6">
+<h6 id="org914d90b"><span class="section-number-6">1.4.9.2.1</span> Implementation</h6>
+<div class="outline-text-6" id="text-1-4-9-2-1">
+<p>
+Tuples are similar to lists, but are stored contiguously in memory. This
+makes accessing their length fast but modification expensive; the new tuple
+must be copied entirely to memory.
+</p>
+</div>
+</div>
+<div id="outline-container-org714343e" class="outline-6">
+<h6 id="org714343e"><span class="section-number-6">1.4.9.2.2</span> Example</h6>
+<div class="outline-text-6" id="text-1-4-9-2-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">t</span> = {<span style="color: #83a598;">:ok</span>, <span style="color: #d3869b; font-weight: bold;">42</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd87039c" class="outline-6">
+<h6 id="orgd87039c"><span class="section-number-6">1.4.9.2.3</span> Common usage</h6>
+<div class="outline-text-6" id="text-1-4-9-2-3">
+<p>
+It is common for functions to return a tuple where the first element is the
+atom <code>:ok</code> if there were no errors.
+</p>
+</div>
+</div>
+<div id="outline-container-orgebe8135" class="outline-6">
+<h6 id="orgebe8135"><span class="section-number-6">1.4.9.2.4</span> List vs Tupple</h6>
+<div class="outline-text-6" id="text-1-4-9-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">what</th>
+<th scope="col" class="org-left">pros</th>
+<th scope="col" class="org-left">cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">list</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">accessing length, or appending to list is linear operation</td>
+</tr>
+
+<tr>
+<td class="org-left">tupple</td>
+<td class="org-left">getting length or element fast</td>
+<td class="org-left">updating/adding element expensive (new tuple in memory)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+When counting the elements in a data structure, Elixir also abides by a simple
+rule: the function is named <code>size</code> if the operation is in constant time (i.e.
+the value is pre-calculated) or <code>length</code> if the operation is linear (i.e.
+calculating the length gets slower as the input grows). As a mnemonic, both
+“length” and “linear” start with “l”.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3c4efde" class="outline-5">
+<h5 id="org3c4efde"><span class="section-number-5">1.4.9.3</span> Keyword lists</h5>
+<div class="outline-text-5" id="text-1-4-9-3">
+</div>
+<div id="outline-container-org9f406c7" class="outline-6">
+<h6 id="org9f406c7"><span class="section-number-6">1.4.9.3.1</span> What it is</h6>
+<div class="outline-text-6" id="text-1-4-9-3-1">
+<p>
+Keyword lists and maps are the associative collections of Elixir. In
+Elixir, a keyword list is a special list of two-element tuples whose first
+element is an atom; they share performance with lists.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">list</span> = [<span style="color: #83a598;">a:</span> <span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #83a598;">b:</span> <span style="color: #d3869b; font-weight: bold;">2</span>] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">list = [{:a, 1}, {:b, 2}]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8af5abc" class="outline-6">
+<h6 id="org8af5abc"><span class="section-number-6">1.4.9.3.2</span> Characteristics</h6>
+<div class="outline-text-6" id="text-1-4-9-3-2">
+<ul class="org-ul">
+<li>Keys must be atoms.</li>
+<li>Keys are ordered, as specified by the developer.</li>
+<li><p>
+Keys can be given more than once.
+</p>
+
+<p>
+Since it&rsquo;s a list, they provide the same linear performance characteristics
+as lists. The longer the list, the longer it will take to find a key, to
+count the number of items, and so on.
+</p>
+
+<p>
+They are mainly used to pass optional values.
+</p>
+
+<p>
+When the keyword list is the last argument of a function, the square brackets are optional.
+</p>
+
+<p>
+We should use <code>Keyword</code> module to work with keyword lists.
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org702de81" class="outline-6">
+<h6 id="org702de81"><span class="section-number-6">1.4.9.3.3</span> Where are they used</h6>
+<div class="outline-text-6" id="text-1-4-9-3-3">
+<p>
+Keyword lists are most commonly used to pass options to functions.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff07547" class="outline-5">
+<h5 id="orgff07547"><span class="section-number-5">1.4.9.4</span> Maps</h5>
+<div class="outline-text-5" id="text-1-4-9-4">
+</div>
+<div id="outline-container-org55774fc" class="outline-6">
+<h6 id="org55774fc"><span class="section-number-6">1.4.9.4.1</span> Examples</h6>
+<div class="outline-text-6" id="text-1-4-9-4-1">
+</div>
+<div id="outline-container-org03a717c" class="outline-7">
+<h7 id="org03a717c"><span class="section-number-7">1.4.9.4.1.1</span> Defining</h7>
+<div class="outline-text-7" id="text-1-4-9-4-1-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">states</span> = %{<span style="color: #b8bb26;">"Al"</span> =&gt; <span style="color: #b8bb26;">"Alabama"</span>, <span style="color: #b8bb26;">"WI"</span> =&gt; <span style="color: #b8bb26;">"Wisconsin"</span>}
+states[<span style="color: #b8bb26;">"AL"</span>]
+
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">If atoms are keys</span>
+<span style="color: #83a598;">colors</span> = %{<span style="color: #83a598;">red:</span> 0xf00, <span style="color: #83a598;">green:</span> 0x0f0, <span style="color: #83a598;">blue:</span> 0x00f}
+colors[<span style="color: #83a598;">:red</span>]
+colors.red
+
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">Pattern matching</span>
+%{<span style="color: #83a598;">:a</span> =&gt; a} = %{<span style="color: #83a598;">:a</span> =&gt; <span style="color: #d3869b; font-weight: bold;">1</span>} <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">a = 1</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge352828" class="outline-7">
+<h7 id="orge352828"><span class="section-number-7">1.4.9.4.1.2</span> Updating key&rsquo;s value</h7>
+<div class="outline-text-7" id="text-1-4-9-4-1-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">map</span> = %{<span style="color: #83a598;">:a</span> =&gt;, <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; <span style="color: #83a598;">:b</span>}
+%{map | <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; <span style="color: #b8bb26;">"two"</span>} <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">%{2 =&gt; "two", :a =&gt; 1}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9e9342" class="outline-7">
+<h7 id="orga9e9342"><span class="section-number-7">1.4.9.4.1.3</span> Adding key</h7>
+<div class="outline-text-7" id="text-1-4-9-4-1-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">Map</span>.put(%{<span style="color: #83a598;">:a</span> =&gt; <span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span> =&gt; <span style="color: #83a598;">:b</span>}, <span style="color: #83a598;">:c</span>, <span style="color: #d3869b; font-weight: bold;">3</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8bf07eb" class="outline-7">
+<h7 id="org8bf07eb"><span class="section-number-7">1.4.9.4.1.4</span> Updating nested structure</h7>
+<div class="outline-text-7" id="text-1-4-9-4-1-4">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">users</span> = [
+  <span style="color: #83a598;">john:</span> %{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"John"</span>, <span style="color: #83a598;">age:</span> <span style="color: #d3869b; font-weight: bold;">27</span>, <span style="color: #83a598;">languages:</span> [<span style="color: #b8bb26;">"Erlang"</span>, <span style="color: #b8bb26;">"Ruby"</span>, <span style="color: #b8bb26;">"Elixir"</span>]},
+  <span style="color: #83a598;">mary:</span> %{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Mary"</span>, <span style="color: #83a598;">age:</span> <span style="color: #d3869b; font-weight: bold;">29</span>, <span style="color: #83a598;">languages:</span> [<span style="color: #b8bb26;">"Elixir"</span>, <span style="color: #b8bb26;">"F#"</span>, <span style="color: #b8bb26;">"Clojure"</span>]}
+]
+
+put_in users[<span style="color: #83a598;">:john</span>].age, <span style="color: #d3869b; font-weight: bold;">31</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">updating john's age to 31</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaae6c7d" class="outline-6">
+<h6 id="orgaae6c7d"><span class="section-number-6">1.4.9.4.2</span> Characteristics</h6>
+<div class="outline-text-6" id="text-1-4-9-4-2">
+<ul class="org-ul">
+<li>they allow any values as a key</li>
+<li>keys do not follow any ordering</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org3626984" class="outline-5">
+<h5 id="org3626984"><span class="section-number-5">1.4.9.5</span> Sets</h5>
+</div>
+<div id="outline-container-org1d4e5ea" class="outline-5">
+<h5 id="org1d4e5ea"><span class="section-number-5">1.4.9.6</span> Struct</h5>
+<div class="outline-text-5" id="text-1-4-9-6">
+</div>
+<div id="outline-container-orgc0fdb7f" class="outline-6">
+<h6 id="orgc0fdb7f"><span class="section-number-6">1.4.9.6.1</span> What it is</h6>
+<div class="outline-text-6" id="text-1-4-9-6-1">
+<p>
+It&rsquo;s just a module that wraps a limited form of map. Keys must be atoms.
+The name of the module becomes the name of the map type.
+</p>
+</div>
+</div>
+<div id="outline-container-org8f245e2" class="outline-6">
+<h6 id="org8f245e2"><span class="section-number-6">1.4.9.6.2</span> Examples</h6>
+<div class="outline-text-6" id="text-1-4-9-6-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Attendee</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">defstruct</span> <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">""</span>, <span style="color: #83a598;">paid:</span> <span style="color: #83a598;">false</span>, <span style="color: #83a598;">over_18:</span> <span style="color: #83a598;">true</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">may_attend_after_party</span>(<span style="color: #83a598;">attendee</span> = <span style="color: #8ec07c;">%Attendee</span>{}) <span style="color: #fb4934;">do</span>
+    attendee.paid &amp;&amp; attendee.over_18
+  <span style="color: #fb4934;">end</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">print_vip_badge</span>(<span style="color: #8ec07c;">%Attendee</span>{<span style="color: #83a598;">name:</span> name}) <span style="color: #fb4934;">when</span> name != <span style="color: #b8bb26;">""</span> <span style="color: #fb4934;">do</span>
+    <span style="color: #8ec07c;">IO</span>.puts <span style="color: #b8bb26;">"Very cheap badge for </span><span style="color: #83a598;">#{name}</span><span style="color: #b8bb26;">"</span>
+  <span style="color: #fb4934;">end</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">print_vip_badge</span>(<span style="color: #8ec07c;">%Attendee</span>{}) <span style="color: #fb4934;">do</span>
+    <span style="color: #fb4934;">raise</span> <span style="color: #b8bb26;">"missing name for badge"</span>
+  <span style="color: #fb4934;">end</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc44882e" class="outline-6">
+<h6 id="orgc44882e"><span class="section-number-6">1.4.9.6.3</span> You can match structs against maps</h6>
+<div class="outline-text-6" id="text-1-4-9-6-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Example.User</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">defstruct</span> <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Sean"</span>, <span style="color: #83a598;">roles:</span> []
+<span style="color: #fb4934;">end</span>
+<span style="color: #83a598;">sean</span> = <span style="color: #8ec07c;">%Example.User</span>{}
+%{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Sean"</span>} = sean
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org648a86d" class="outline-5">
+<h5 id="org648a86d"><span class="section-number-5">1.4.9.7</span> When to use map/keyword list/struct?</h5>
+<div class="outline-text-5" id="text-1-4-9-7">
+</div>
+<div id="outline-container-orga64a546" class="outline-6">
+<h6 id="orga64a546"><span class="section-number-6">1.4.9.7.1</span> Map</h6>
+<div class="outline-text-6" id="text-1-4-9-7-1">
+<ul class="org-ul">
+<li>matching a dictiornary that has a key of <code>:name</code> somewhere in it</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga670fdf" class="outline-6">
+<h6 id="orga670fdf"><span class="section-number-6">1.4.9.7.2</span> Keyword lists</h6>
+<div class="outline-text-6" id="text-1-4-9-7-2">
+<ul class="org-ul">
+<li>more than one entry with the same key</li>
+<li>elements are ordered</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35db6f4" class="outline-6">
+<h6 id="org35db6f4"><span class="section-number-6">1.4.9.7.3</span> Struct</h6>
+<div class="outline-text-6" id="text-1-4-9-7-3">
+<p>
+Fixed set of fields.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae45dbf" class="outline-5">
+<h5 id="orgae45dbf"><span class="section-number-5">1.4.9.8</span> Processing collections</h5>
+<div class="outline-text-5" id="text-1-4-9-8">
+</div>
+<div id="outline-container-org95a2788" class="outline-6">
+<h6 id="org95a2788"><span class="section-number-6">1.4.9.8.1</span> Enumerable protocol</h6>
+<div class="outline-text-6" id="text-1-4-9-8-1">
+<p>
+Things that can be iterated are said to implement the <code>Enumerable</code> protocol.
+</p>
+</div>
+</div>
+<div id="outline-container-orgea2d08d" class="outline-6">
+<h6 id="orgea2d08d"><span class="section-number-6">1.4.9.8.2</span> Two ways of processing collections</h6>
+<div class="outline-text-6" id="text-1-4-9-8-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Enum</td>
+<td class="org-left">use it all the time</td>
+</tr>
+
+<tr>
+<td class="org-left">Stream</td>
+<td class="org-left">lets you enumerate a colleciton lazily: next value is calculated only when it is needed</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgcb61ae7" class="outline-6">
+<h6 id="orgcb61ae7"><span class="section-number-6">1.4.9.8.3</span> Sorting</h6>
+<div class="outline-text-6" id="text-1-4-9-8-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">Enum</span>.sort [<span style="color: #b8bb26;">"there"</span>, <span style="color: #b8bb26;">"was"</span>, <span style="color: #b8bb26;">"a"</span>], &amp;(<span style="color: #8ec07c;">String</span>.length(&amp;1) &lt;= <span style="color: #8ec07c;">String</span>.length(&amp;2))
+</pre>
+</div>
+<p>
+It&rsquo;s important to use &lt;= and not just &lt; if you want the sort to be stable.
+</p>
+</div>
+</div>
+<div id="outline-container-org8a57460" class="outline-6">
+<h6 id="org8a57460"><span class="section-number-6">1.4.9.8.4</span> Comprehensions</h6>
+<div class="outline-text-6" id="text-1-4-9-8-4">
+</div>
+<div id="outline-container-org36eac06" class="outline-7">
+<h7 id="org36eac06"><span class="section-number-7">1.4.9.8.4.1</span> Example</h7>
+<div class="outline-text-7" id="text-1-4-9-8-4-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">for</span> x &lt;- [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>], y &lt;- [<span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">6</span>] <span style="color: #83a598;">do:</span> {x, y}
+[{<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">5</span>}, {<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">6</span>}, {<span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">5</span>}, {<span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">6</span>}]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc11660e" class="outline-7">
+<h7 id="orgc11660e"><span class="section-number-7">1.4.9.8.4.2</span> Scope</h7>
+<div class="outline-text-7" id="text-1-4-9-8-4-2">
+<p>
+All variable assignments inside a comprehension are local to that
+comprehension—you will not affect the value of a variable in the outer scope.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">iex&gt; <span style="color: #83a598;">name</span> = <span style="color: #b8bb26;">"Dave"</span>
+<span style="color: #8ec07c;">Dave</span>
+iex&gt; <span style="color: #fb4934;">for</span> name &lt;- [ <span style="color: #b8bb26;">"cat"</span>, <span style="color: #b8bb26;">"dog"</span> ], <span style="color: #83a598;">do:</span> <span style="color: #8ec07c;">String</span>.upcase(name)
+[<span style="color: #b8bb26;">"CAT"</span>, <span style="color: #b8bb26;">"DOG"</span>]
+iex&gt; name
+<span style="color: #8ec07c;">Dave</span>
+iex&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge30ce8a" class="outline-7">
+<h7 id="orge30ce8a"><span class="section-number-7">1.4.9.8.4.3</span> Return value</h7>
+<div class="outline-text-7" id="text-1-4-9-8-4-3">
+<p>
+Returning list:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">for</span> x &lt;- [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>] <span style="color: #83a598;">do:</span> x
+[<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>]
+</pre>
+</div>
+<p>
+Returning map:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">for</span> x &lt;- <span style="color: #fe8019;">~w</span>{<span style="color: #b8bb26;"> cat, dog</span>}, <span style="color: #83a598;">into:</span> %{}, <span style="color: #83a598;">do:</span> {x, <span style="color: #8ec07c;">String</span>.upcase(x) }
+%{<span style="color: #b8bb26;">"cat"</span> =&gt; <span style="color: #b8bb26;">"CAT"</span>, <span style="color: #b8bb26;">"dog"</span> =&gt; <span style="color: #b8bb26;">"DOG"</span>}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org53c792d" class="outline-4">
+<h4 id="org53c792d"><span class="section-number-4">1.4.10</span> Binaries</h4>
+<div class="outline-text-4" id="text-1-4-10">
+</div>
+<div id="outline-container-org324aaea" class="outline-5">
+<h5 id="org324aaea"><span class="section-number-5">1.4.10.1</span> Example</h5>
+<div class="outline-text-5" id="text-1-4-10-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">bin</span> = &lt;&lt; <span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span> &gt;&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6265d4e" class="outline-5">
+<h5 id="org6265d4e"><span class="section-number-5">1.4.10.2</span> Getting single character&rsquo;s code point</h5>
+<div class="outline-text-5" id="text-1-4-10-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598; font-weight: bold;">?a</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">97</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org450f13a" class="outline-5">
+<h5 id="org450f13a"><span class="section-number-5">1.4.10.3</span> Binary/Bitstring</h5>
+<div class="outline-text-5" id="text-1-4-10-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Concatenation operator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Binary</td>
+<td class="org-left">Bitstring where the number of bits is divisible by 8</td>
+<td class="org-left">&ldquo;Hello&rdquo;, <a id="org7661412"></a></td>
+<td class="org-left">&lt;&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">Bitstrig</td>
+<td class="org-left">Sequence of bits</td>
+<td class="org-left"><a id="orge6a3a7f"></a></td>
+<td class="org-left">&lt;&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">String</td>
+<td class="org-left">UTF-8 encoded binary</td>
+<td class="org-left">&ldquo;Hello&rdquo;</td>
+<td class="org-left">&lt;&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">Charlist</td>
+<td class="org-left">list of code points</td>
+<td class="org-left">&rsquo;hello&rsquo;</td>
+<td class="org-left">++ (because it&rsquo;s list</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfe41475" class="outline-4">
+<h4 id="orgfe41475"><span class="section-number-4">1.4.11</span> Date/Time</h4>
+<div class="outline-text-4" id="text-1-4-11">
+</div>
+<div id="outline-container-org192b00e" class="outline-5">
+<h5 id="org192b00e"><span class="section-number-5">1.4.11.1</span> About</h5>
+<div class="outline-text-5" id="text-1-4-11-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Date</td>
+<td class="org-left">Holds year, month and day</td>
+</tr>
+
+<tr>
+<td class="org-left">Time</td>
+<td class="org-left">Holds hour, minute, second, and fraction of second</td>
+</tr>
+
+<tr>
+<td class="org-left">DateTime</td>
+<td class="org-left">Has ability to associate a time zone</td>
+</tr>
+
+<tr>
+<td class="org-left">NaiveDateTime</td>
+<td class="org-left">Has just date and time (no time zone)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9b4796a" class="outline-5">
+<h5 id="org9b4796a"><span class="section-number-5">1.4.11.2</span> Example</h5>
+<div class="outline-text-5" id="text-1-4-11-2">
+<div class="org-src-container">
+<pre class="src src-elixir">        <span style="color: #83a598;">d</span> = <span style="color: #8ec07c;">Date</span>.new(<span style="color: #d3869b; font-weight: bold;">2018</span>, <span style="color: #d3869b; font-weight: bold;">12</span>, <span style="color: #d3869b; font-weight: bold;">25</span>)
+        <span style="color: #83a598;">d</span> = <span style="color: #fe8019;">~D</span>[<span style="color: #d3869b; font-weight: bold;">2018</span>-<span style="color: #d3869b; font-weight: bold;">12</span>-<span style="color: #d3869b; font-weight: bold;">25</span>] <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">Sigils</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a515d9" class="outline-5">
+<h5 id="org2a515d9"><span class="section-number-5">1.4.11.3</span> In real projects</h5>
+<div class="outline-text-5" id="text-1-4-11-3">
+<p>
+Use <a href="https://github.com/bitwalker/timex">Timex</a> date/time library.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb09482" class="outline-3">
+<h3 id="orgfb09482"><span class="section-number-3">1.5</span> Functions</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org36c110f" class="outline-4">
+<h4 id="org36c110f"><span class="section-number-4">1.5.1</span> Function signature when listed in help</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+For e.g. <code>v/1</code> means that <code>v</code> function takes one argument.
+</p>
+</div>
+</div>
+<div id="outline-container-org5e9df90" class="outline-4">
+<h4 id="org5e9df90"><span class="section-number-4">1.5.2</span> Anonymous functions</h4>
+<div class="outline-text-4" id="text-1-5-2">
+</div>
+<div id="outline-container-org7bd1fae" class="outline-5">
+<h5 id="org7bd1fae"><span class="section-number-5">1.5.2.1</span> What it is</h5>
+<div class="outline-text-5" id="text-1-5-2-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">sum</span> = <span style="color: #fb4934;">fn</span> (a, b) -&gt; a + b <span style="color: #fb4934;">end</span>
+sum.(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org992dc4b" class="outline-5">
+<h5 id="org992dc4b"><span class="section-number-5">1.5.2.2</span> Parantheses requirements</h5>
+<div class="outline-text-5" id="text-1-5-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">When</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">definition</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">invoking</td>
+<td class="org-left">Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orga6603af" class="outline-5">
+<h5 id="orga6603af"><span class="section-number-5">1.5.2.3</span> Anonymous vs Named functions</h5>
+<div class="outline-text-5" id="text-1-5-2-3">
+<p>
+When invoking anonymous functions, we have to use dot (<code>.</code>), like:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">sum</span> = <span style="color: #fb4934;">fn</span> (a, b) -&gt; a + b <span style="color: #fb4934;">end</span>
+sum.(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span>)
+</pre>
+</div>
+<p>
+The dot ensures there is no ambiguity between calling an anonymous(<code>sum.</code>)
+and named function(<code>sum</code>).
+</p>
+</div>
+</div>
+<div id="outline-container-org50480ea" class="outline-5">
+<h5 id="org50480ea"><span class="section-number-5">1.5.2.4</span> Pattern matching</h5>
+<div class="outline-text-5" id="text-1-5-2-4">
+<p>
+A single function definition can have different implementations, depending
+on the type and contents of the arguments passed.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">handle_open</span> = <span style="color: #fb4934;">fn</span>
+  {<span style="color: #83a598;">:ok</span>, file} -&gt; <span style="color: #b8bb26;">"Read data: </span><span style="color: #83a598;">#{IO.read(file, :line)}</span><span style="color: #b8bb26;">"</span>
+  {<span style="color: #fabd2f;">_</span>, error} -&gt; <span style="color: #b8bb26;">"Error: </span><span style="color: #83a598;">#{:file.format_error(error)}</span><span style="color: #b8bb26;">"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeacf900" class="outline-5">
+<h5 id="orgeacf900"><span class="section-number-5">1.5.2.5</span> Shortcut</h5>
+<div class="outline-text-5" id="text-1-5-2-5">
+</div>
+<div id="outline-container-orgf17f26b" class="outline-6">
+<h6 id="orgf17f26b"><span class="section-number-6">1.5.2.5.1</span> Examples</h6>
+<div class="outline-text-6" id="text-1-5-2-5-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">square</span> = &amp;(&amp;1 * &amp;1) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">return number</span>
+<span style="color: #83a598;">divrem</span> = &amp;{div(&amp;1, &amp;2), rem(&amp;1, &amp;2)} <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">return tupple</span>
+<span style="color: #83a598;">x</span> = &amp;<span style="color: #b8bb26;">"bacon and </span><span style="color: #83a598;">#{&amp;1}</span><span style="color: #b8bb26;">"</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">return string</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ba508e" class="outline-6">
+<h6 id="org0ba508e"><span class="section-number-6">1.5.2.5.2</span> Optimization</h6>
+<div class="outline-text-6" id="text-1-5-2-5-2">
+<p>
+We can write
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">speak</span> = <span style="color: #fb4934;">fn</span> what -&gt; <span style="color: #8ec07c;">IO</span>.puts what
+</pre>
+</div>
+<p>
+as
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">speak</span> = &amp;(<span style="color: #8ec07c;">IO</span>.puts &amp;1)
+</pre>
+</div>
+
+<p>
+Normally Elixir would have generated an anonymous function, so <code>&amp;(IO.puts(&amp;1))</code>
+would become <code>fn x -&gt; IO.puts(x) end</code>. But Elixir noticed that the body of the
+anonymous function was simply a call to a named function (the IO function
+<code>puts</code>) and that the parameters were in the correct order (that is, the first
+parameter to the anonymous function was the first parameter to the named
+function, and so on). So Elixir optimized away the anonymous function,
+replacing it with a direct reference to the function, <code>IO.puts/1</code>. For this to
+work, the arguments must be in the correct order:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">&#8203; iex&gt;&#8203; <span style="color: #83a598;">rnd</span> = &amp;<span style="color: #fb4934;">(</span>Float.round<span style="color: #fabd2f;">(</span>&amp;1, &amp;<span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #fabd2f;">)</span><span style="color: #fb4934;">)</span>
+ &amp;Float.round/2
+ &#8203; iex&gt;&#8203; <span style="color: #83a598;">rnd</span> = &amp;<span style="color: #fb4934;">(</span>Float.round<span style="color: #fabd2f;">(</span>&amp;2, &amp;<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fabd2f;">)</span><span style="color: #fb4934;">)</span>
+ <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">Function&lt;12.17052888 in :erl_eval.expr/5&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc36185" class="outline-4">
+<h4 id="orgcc36185"><span class="section-number-4">1.5.3</span> Named functions</h4>
+<div class="outline-text-4" id="text-1-5-3">
+</div>
+<div id="outline-container-orga0f9144" class="outline-5">
+<h5 id="orga0f9144"><span class="section-number-5">1.5.3.1</span> What it is</h5>
+<div class="outline-text-5" id="text-1-5-3-1">
+<p>
+They must be written inside modules.
+</p>
+</div>
+</div>
+<div id="outline-container-org773609b" class="outline-5">
+<h5 id="org773609b"><span class="section-number-5">1.5.3.2</span> Pattern matching</h5>
+<div class="outline-text-5" id="text-1-5-3-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">MyMath</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(<span style="color: #d3869b; font-weight: bold;">0</span>), <span style="color: #83a598;">do:</span> <span style="color: #d3869b; font-weight: bold;">1</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(n), <span style="color: #83a598;">do:</span> n * factorial(n-<span style="color: #d3869b; font-weight: bold;">1</span>)
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga2d781d" class="outline-5">
+<h5 id="orga2d781d"><span class="section-number-5">1.5.3.3</span> Guard clauses</h5>
+<div class="outline-text-5" id="text-1-5-3-3">
+</div>
+<div id="outline-container-org5cb0373" class="outline-6">
+<h6 id="org5cb0373"><span class="section-number-6">1.5.3.3.1</span> What it is</h6>
+<div class="outline-text-6" id="text-1-5-3-3-1">
+<p>
+They are a way to invoke a function based on argument types, or based on
+some test involving their value (unlike <a href="#org89c5cd2">Pattern matching</a>, where function is
+invoked based on exact argument passed).
+</p>
+
+<p>
+First pattern matching is done, and then guard clauses kicks in.
+</p>
+</div>
+</div>
+<div id="outline-container-org5c7e1ef" class="outline-6">
+<h6 id="org5c7e1ef"><span class="section-number-6">1.5.3.3.2</span> Example</h6>
+<div class="outline-text-6" id="text-1-5-3-3-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Guard</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">what_is</span>(x) <span style="color: #fb4934;">when</span> is_number(x) <span style="color: #fb4934;">do</span>
+    <span style="color: #8ec07c;">IO</span>.puts <span style="color: #b8bb26;">"</span><span style="color: #83a598;">#{x}</span><span style="color: #b8bb26;"> is a number"</span>
+  <span style="color: #fb4934;">end</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">what_is</span>(x) <span style="color: #fb4934;">when</span> is_list(x) <span style="color: #fb4934;">do</span>
+    <span style="color: #8ec07c;">IO</span>.puts <span style="color: #b8bb26;">"</span><span style="color: #83a598;">#{inspect(x)}</span><span style="color: #b8bb26;"> is a list"</span>
+  <span style="color: #fb4934;">end</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(<span style="color: #d3869b; font-weight: bold;">0</span>), <span style="color: #83a598;">do:</span> <span style="color: #d3869b; font-weight: bold;">1</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(n) <span style="color: #fb4934;">when</span> is_integer(n) <span style="color: #fb4934;">and</span> n&gt;<span style="color: #d3869b; font-weight: bold;">0</span>, <span style="color: #83a598;">do:</span> n * factorial(n-<span style="color: #d3869b; font-weight: bold;">1</span>)
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d8c61b" class="outline-5">
+<h5 id="org4d8c61b"><span class="section-number-5">1.5.3.4</span> Default parameters</h5>
+<div class="outline-text-5" id="text-1-5-3-4">
+</div>
+<div id="outline-container-orgaa378a2" class="outline-6">
+<h6 id="orgaa378a2"><span class="section-number-6">1.5.3.4.1</span> Example</h6>
+<div class="outline-text-6" id="text-1-5-3-4-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">MyModule</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">myFunc</span>(p1, p2 \\ <span style="color: #d3869b; font-weight: bold;">2</span>, p3 \\ <span style="color: #d3869b; font-weight: bold;">3</span>, p4), <span style="color: #83a598;">do:</span> <span style="color: #8ec07c;">IO</span>.inspect [p1, p2, p3, p4]
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #8ec07c;">MyModule</span>.myFunc(<span style="color: #b8bb26;">"a"</span>, <span style="color: #b8bb26;">"b"</span>)           <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">["a", 2, 3, "b"]</span>
+<span style="color: #8ec07c;">MyModule</span>.myFunc(<span style="color: #b8bb26;">"a"</span>, <span style="color: #b8bb26;">"b"</span>, <span style="color: #b8bb26;">"c"</span>)      <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">["a", "b", 3, "c"]</span>
+<span style="color: #8ec07c;">MyModule</span>.myFunc(<span style="color: #b8bb26;">"a"</span>, <span style="color: #b8bb26;">"b"</span>, <span style="color: #b8bb26;">"c"</span>, <span style="color: #b8bb26;">"d"</span>) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">["a", "b", "c", "d"]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1b72f4" class="outline-6">
+<h6 id="orgd1b72f4"><span class="section-number-6">1.5.3.4.2</span> Default value</h6>
+<div class="outline-text-6" id="text-1-5-3-4-2">
+<p>
+Any expression is allowed to serve as a default value, but it won’t be
+evaluated during the function definition. Every time the function is invoked
+and any of its default values have to be used, the expression for that
+default value will be evaluated.
+</p>
+</div>
+</div>
+<div id="outline-container-org984031f" class="outline-6">
+<h6 id="org984031f"><span class="section-number-6">1.5.3.4.3</span> Function with default values has multiple clauses</h6>
+<div class="outline-text-6" id="text-1-5-3-4-3">
+<p>
+If a function with default values has multiple clauses, it is required to
+create a function head (without an actual body) for declaring defaults:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Concat</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">join</span>(a, b \\ <span style="color: #83a598;">nil</span>, sep \\ <span style="color: #b8bb26;">" "</span>)
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">join</span>(a, b, <span style="color: #7c6f64;">_sep</span>) <span style="color: #fb4934;">when</span> is_nil(b) <span style="color: #fb4934;">do</span>
+    a
+  <span style="color: #fb4934;">end</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">join</span>(a, b, sep) <span style="color: #fb4934;">do</span>
+    a &lt;&gt; sep &lt;&gt; b
+  <span style="color: #fb4934;">end</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7c515e6" class="outline-5">
+<h5 id="org7c515e6"><span class="section-number-5">1.5.3.5</span> Private functions (defp)</h5>
+<div class="outline-text-5" id="text-1-5-3-5">
+<p>
+They can be called only within the module that declares it:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">MyModule</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">defp</span> <span style="color: #8ec07c;">myPrivateFunc</span>(n), <span style="color: #83a598;">do:</span> <span style="color: #8ec07c;">IO</span>.puts n
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f69080" class="outline-5">
+<h5 id="org4f69080"><span class="section-number-5">1.5.3.6</span> do end</h5>
+<div class="outline-text-5" id="text-1-5-3-6">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">double</span>(n) <span style="color: #fb4934;">do</span>
+  n*<span style="color: #d3869b; font-weight: bold;">2</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+can be shortened into:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">double</span>(n), <span style="color: #83a598;">do:</span> n*<span style="color: #d3869b; font-weight: bold;">2</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaaa4911" class="outline-4">
+<h4 id="orgaaa4911"><span class="section-number-4">1.5.4</span> Parantheses</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+We can omit them when declaring or invoking function.
+But if function has no argument, we must use them when invoking function.
+</p>
+
+<p>
+You should always use parentheses around function parameters in pipelines.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd1f2724" class="outline-4">
+<h4 id="orgd1f2724"><span class="section-number-4">1.5.5</span> Functions capturing</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">fun</span> = <span style="color: #8ec07c;">&amp;Math</span>.zero?/<span style="color: #d3869b; font-weight: bold;">1</span>
+fun.(<span style="color: #d3869b; font-weight: bold;">0</span>)
+
+<span style="color: #83a598;">fun</span> = <span style="color: #8ec07c;">&amp;List</span>.flatten(&amp;1, &amp;2)
+</pre>
+</div>
+<p>
+<code>&amp;List.flatten(&amp;1, &amp;2)</code> is the same as writing <code>fn(list, tail) -&gt; List.flatten(list, tail) end</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7000591" class="outline-3">
+<h3 id="org7000591"><span class="section-number-3">1.6</span> Control Structures</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-org884f353" class="outline-4">
+<h4 id="org884f353"><span class="section-number-4">1.6.1</span> if/unless</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+<code>if</code> and <code>unless</code> are defined as macros, not language constructs.
+You can find their implementation in the Kernel module.
+</p>
+</div>
+<div id="outline-container-orgb60684f" class="outline-5">
+<h5 id="orgb60684f"><span class="section-number-5">1.6.1.1</span> example</h5>
+<div class="outline-text-5" id="text-1-6-1-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">if</span> <span style="color: #83a598;">nil</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #b8bb26;">"This won't be seen"</span>
+<span style="color: #fb4934;">else</span>
+  <span style="color: #b8bb26;">"This will"</span>
+<span style="color: #fb4934;">end</span>
+
+
+<span style="color: #fb4934;">unless</span> <span style="color: #83a598;">true</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #b8bb26;">"This will never be seen"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org12b66c9" class="outline-4">
+<h4 id="org12b66c9"><span class="section-number-4">1.6.2</span> case</h4>
+<div class="outline-text-4" id="text-1-6-2">
+</div>
+<div id="outline-container-org8dcea30" class="outline-5">
+<h5 id="org8dcea30"><span class="section-number-5">1.6.2.1</span> Example</h5>
+<div class="outline-text-5" id="text-1-6-2-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">case</span> {<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">3</span>} <span style="color: #fb4934;">do</span>
+  {<span style="color: #d3869b; font-weight: bold;">4</span>, <span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">6</span>} -&gt;
+    <span style="color: #b8bb26;">"This clause won't match"</span>
+  {<span style="color: #d3869b; font-weight: bold;">1</span>, x, <span style="color: #d3869b; font-weight: bold;">3</span>} -&gt;
+    <span style="color: #b8bb26;">"This clause will match and bind x to 2 in this clause"</span>
+  <span style="color: #fabd2f;">_</span> -&gt;
+    <span style="color: #b8bb26;">"This clause would match any value"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc92d282" class="outline-5">
+<h5 id="orgc92d282"><span class="section-number-5">1.6.2.2</span> Case supports guard clauses</h5>
+<div class="outline-text-5" id="text-1-6-2-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">case</span> {<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">3</span>} <span style="color: #fb4934;">do</span>
+  {<span style="color: #d3869b; font-weight: bold;">1</span>, x, <span style="color: #d3869b; font-weight: bold;">3</span>} <span style="color: #fb4934;">when</span> x &gt; <span style="color: #d3869b; font-weight: bold;">0</span> -&gt; <span style="color: #b8bb26;">"match"</span>
+  <span style="color: #fabd2f;">_</span>                    -&gt; <span style="color: #b8bb26;">"guard condition were not satisfied"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b56244" class="outline-5">
+<h5 id="org1b56244"><span class="section-number-5">1.6.2.3</span> When to use</h5>
+<div class="outline-text-5" id="text-1-6-2-3">
+<p>
+If it&rsquo;s necessary to match against multiple patterns
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c86cb3" class="outline-4">
+<h4 id="org5c86cb3"><span class="section-number-4">1.6.3</span> cond</h4>
+<div class="outline-text-4" id="text-1-6-3">
+</div>
+<div id="outline-container-orgeaad6fc" class="outline-5">
+<h5 id="orgeaad6fc"><span class="section-number-5">1.6.3.1</span> Example</h5>
+<div class="outline-text-5" id="text-1-6-3-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">cond</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #d3869b; font-weight: bold;">2</span> + <span style="color: #d3869b; font-weight: bold;">2</span> == <span style="color: #d3869b; font-weight: bold;">5</span> -&gt;
+    <span style="color: #b8bb26;">"This is never true"</span>
+  <span style="color: #d3869b; font-weight: bold;">2</span> * <span style="color: #d3869b; font-weight: bold;">2</span> == <span style="color: #d3869b; font-weight: bold;">3</span> -&gt;
+    <span style="color: #b8bb26;">"Nor this"</span>
+  <span style="color: #83a598;">true</span> -&gt;
+    <span style="color: #b8bb26;">"This is always true (equivalent to else)"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org36247f1" class="outline-5">
+<h5 id="org36247f1"><span class="section-number-5">1.6.3.2</span> When to use</h5>
+<div class="outline-text-5" id="text-1-6-3-2">
+<p>
+To check different conditions and find the first one that evaluates to true.
+It&rsquo;s basically <code>else if</code> clauses in many imperative languages.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge65e535" class="outline-4">
+<h4 id="orge65e535"><span class="section-number-4">1.6.4</span> with</h4>
+<div class="outline-text-4" id="text-1-6-4">
+</div>
+<div id="outline-container-org5750cb5" class="outline-5">
+<h5 id="org5750cb5"><span class="section-number-5">1.6.4.1</span> Doesn&rsquo;t change outer scope</h5>
+<div class="outline-text-5" id="text-1-6-4-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">content</span> = <span style="color: #b8bb26;">"ok"</span>
+<span style="color: #fb4934;">with</span> {<span style="color: #83a598;">:ok</span>, file} = <span style="color: #8ec07c;">File</span>.open(<span style="color: #b8bb26;">"with.esx"</span>),
+     <span style="color: #83a598;">content</span>     = <span style="color: #8ec07c;">IO</span>.read(file, <span style="color: #83a598;">:all</span>),
+       <span style="color: #83a598;">:ok</span>       = <span style="color: #8ec07c;">File</span>.close(file)
+  <span style="color: #fb4934;">do</span>
+  <span style="color: #8ec07c;">IO</span>.puts(content) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">what was read from file</span>
+<span style="color: #fb4934;">end</span>
+
+  <span style="color: #8ec07c;">IO</span>.puts content <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">"ok"</span>
+</pre>
+</div>
+<p>
+This code didn&rsquo;t changed outer <code>content</code> variable.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb75761" class="outline-5">
+<h5 id="orgdb75761"><span class="section-number-5">1.6.4.2</span> <code>with</code> is treated as a function</h5>
+<div class="outline-text-5" id="text-1-6-4-2">
+<p>
+Underneath the covers, <code>with</code> is treated by Elixir as if it were a call to a
+function or macro.
+That means that you cannot write this:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">mean</span> = <span style="color: #fb4934;">with</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">WRONG!</span>
+   <span style="color: #83a598;">count</span> = <span style="color: #8ec07c;">Enum</span>.count(values),
+     <span style="color: #83a598;">sum</span>   = <span style="color: #8ec07c;">Enum</span>.sum(values)
+     <span style="color: #fb4934;">do</span>
+     sum/count
+   <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+Instead, you can put the first parameter on the same line:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">mean</span> = <span style="color: #fb4934;">with</span> <span style="color: #83a598;">count</span> = <span style="color: #8ec07c;">Enum</span>.count(values),
+            <span style="color: #83a598;">sum</span>   = <span style="color: #8ec07c;">Enum</span>.sum(values)
+  <span style="color: #fb4934;">do</span>
+  sum/count
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+or
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">mean</span> = <span style="color: #fb4934;">with</span>(
+         <span style="color: #83a598;">count</span> = <span style="color: #8ec07c;">Enum</span>.count(values),
+         <span style="color: #83a598;">sum</span>   = <span style="color: #8ec07c;">Enum</span>.sum(values)
+           <span style="color: #fb4934;">do</span>
+           sum/count
+         <span style="color: #fb4934;">end</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c3960f" class="outline-5">
+<h5 id="org4c3960f"><span class="section-number-5">1.6.4.3</span> else</h5>
+<div class="outline-text-5" id="text-1-6-4-3">
+<p>
+<code>with</code> supports <code>else</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">import</span> <span style="color: #8ec07c;">Integer</span>
+
+<span style="color: #83a598;">m</span> = %{<span style="color: #83a598;">a:</span> <span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #83a598;">c:</span> <span style="color: #d3869b; font-weight: bold;">3</span>}
+
+<span style="color: #83a598;">a</span> =
+  <span style="color: #fb4934;">with</span> {<span style="color: #83a598;">:ok</span>, number} &lt;- <span style="color: #8ec07c;">Map</span>.fetch(m, <span style="color: #83a598;">:a</span>),
+       <span style="color: #83a598;">true</span> &lt;- is_even(number) <span style="color: #fb4934;">do</span>
+    <span style="color: #8ec07c;">IO</span>.puts <span style="color: #b8bb26;">"</span><span style="color: #83a598;">#{number}</span><span style="color: #b8bb26;"> divided by 2 is </span><span style="color: #83a598;">#{div(number, 2)}</span><span style="color: #b8bb26;">"</span>
+    <span style="color: #83a598;">:even</span>
+  <span style="color: #fb4934;">else</span>
+    <span style="color: #83a598;">:error</span> -&gt;
+      <span style="color: #8ec07c;">IO</span>.puts(<span style="color: #b8bb26;">"We don't have this item in map"</span>)
+    <span style="color: #83a598;">:error</span>
+
+    <span style="color: #fabd2f;">_</span> -&gt;
+      <span style="color: #8ec07c;">IO</span>.puts(<span style="color: #b8bb26;">"It is odd"</span>)
+    <span style="color: #83a598;">:odd</span>
+  <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8cf2446" class="outline-5">
+<h5 id="org8cf2446"><span class="section-number-5">1.6.4.4</span> Using  <code>&lt;-</code> instead of <code>=</code></h5>
+<div class="outline-text-5" id="text-1-6-4-4">
+<p>
+If you use <code>&lt;-</code> instead of = in a with expression, it performs a match, but
+if it fails it returns the value that couldn’t be matched:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">&#8203; <span style="color: #fb4934;">with</span>&#8203; [a|<span style="color: #fabd2f;">_</span>] &lt;- [<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>], &#8203;<span style="color: #fb4934;">do</span>&#8203;: a <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">1</span>
+  <span style="color: #fb4934;">with</span>&#8203; [a|<span style="color: #fabd2f;">_</span>] &lt;- <span style="color: #83a598;">nil</span>,     &#8203;<span style="color: #fb4934;">do</span>&#8203;: a <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">nil</span>
+</pre>
+</div>
+<p>
+This can be used for e.g. in a code where we want to return <code>nil</code> if the user can&rsquo;t be found:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">person</span> = <span style="color: #fb4934;">with</span> [<span style="color: #fabd2f;">_</span>, uid, gid] &lt;- <span style="color: #8ec07c;">Regex</span>.run(..., content)
+  <span style="color: #fb4934;">do</span>
+  <span style="color: #b8bb26;">"group :</span><span style="color: #83a598;">#{gid}</span><span style="color: #b8bb26;">, user: </span><span style="color: #83a598;">#{uid}</span><span style="color: #b8bb26;">"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+If regex doesn&rsquo;t return something that can be matched, <code>person</code> will be <code>nil</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgca3ecb0" class="outline-5">
+<h5 id="orgca3ecb0"><span class="section-number-5">1.6.4.5</span> Example of when <code>with</code> simplifes things</h5>
+<div class="outline-text-5" id="text-1-6-4-5">
+<p>
+Without
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">case</span> <span style="color: #8ec07c;">Repo</span>.insert(changeset) <span style="color: #fb4934;">do</span>
+  {<span style="color: #83a598;">:ok</span>, user} -&gt;
+    <span style="color: #fb4934;">case</span> <span style="color: #8ec07c;">Guardian</span>.encode_and_sign(user, <span style="color: #83a598;">:token</span>, claims) <span style="color: #fb4934;">do</span>
+      {<span style="color: #83a598;">:ok</span>, token, full_claims} -&gt;
+        important_stuff(token, full_claims)
+
+      error -&gt;
+        error
+    <span style="color: #fb4934;">end</span>
+
+  error -&gt;
+    error
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+
+<p>
+With
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">with</span> {<span style="color: #83a598;">:ok</span>, user} &lt;- <span style="color: #8ec07c;">Repo</span>.insert(changeset),
+     {<span style="color: #83a598;">:ok</span>, token, full_claims} &lt;- <span style="color: #8ec07c;">Guardian</span>.encode_and_sign(user, <span style="color: #83a598;">:token</span>, claims) <span style="color: #fb4934;">do</span>
+  important_stuff(token, full_claims)
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org71f33a3" class="outline-4">
+<h4 id="org71f33a3"><span class="section-number-4">1.6.5</span> Summary when to use</h4>
+<div class="outline-text-4" id="text-1-6-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">if [else]</td>
+<td class="org-left">testing single condition</td>
+</tr>
+
+<tr>
+<td class="org-left">cond</td>
+<td class="org-left">testing multiple conditions</td>
+</tr>
+
+<tr>
+<td class="org-left">case</td>
+<td class="org-left">testing against pattern matching</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org7c8ba12" class="outline-3">
+<h3 id="org7c8ba12"><span class="section-number-3">1.7</span> Exceptions</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+<div id="outline-container-orgfb07f39" class="outline-4">
+<h4 id="orgfb07f39"><span class="section-number-4">1.7.1</span> When to use</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<p>
+They are used only for things that should never happen:
+</p>
+<ul class="org-ul">
+<li>database down</li>
+<li>server not responding
+It&rsquo;s not used to communicate user errors, like wrong entered filename etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org858fc2f" class="outline-4">
+<h4 id="org858fc2f"><span class="section-number-4">1.7.2</span> Functions that are throwing exceptions</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<p>
+If you see exclamation point in method name, like <code>File.open!</code>, method might
+throw an exception.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org79c45bc" class="outline-3">
+<h3 id="org79c45bc"><span class="section-number-3">1.8</span> Modules</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-orgab80618" class="outline-4">
+<h4 id="orgab80618"><span class="section-number-4">1.8.1</span> Referencing functions</h4>
+<div class="outline-text-4" id="text-1-8-1">
+<p>
+Functions inside the same module can call each other without module name.
+</p>
+</div>
+</div>
+<div id="outline-container-org58c40f5" class="outline-4">
+<h4 id="org58c40f5"><span class="section-number-4">1.8.2</span> Module nesting</h4>
+<div class="outline-text-4" id="text-1-8-2">
+<p>
+Module nesting in Elixir is an illusion - all modules are defined at the top
+elvel. When we define a module inside another, Elixir simply prepends the
+outer module name to the inner module name, putting a dot between the two.
+</p>
+
+<p>
+There&rsquo;s no particular relationship between nested modules.
+</p>
+</div>
+</div>
+<div id="outline-container-orga193dcd" class="outline-4">
+<h4 id="orga193dcd"><span class="section-number-4">1.8.3</span> Directives</h4>
+<div class="outline-text-4" id="text-1-8-3">
+</div>
+<div id="outline-container-orgb0f7eb9" class="outline-5">
+<h5 id="orgb0f7eb9"><span class="section-number-5">1.8.3.1</span> import</h5>
+<div class="outline-text-5" id="text-1-8-3-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">func2</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">import</span> <span style="color: #8ec07c;">List</span>, <span style="color: #83a598;">only:</span> [<span style="color: #83a598;">flatten:</span> <span style="color: #d3869b; font-weight: bold;">1</span>] <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">imports only flatten method from List</span>
+  flatten [<span style="color: #d3869b; font-weight: bold;">5</span>, [<span style="color: #d3869b; font-weight: bold;">6</span> ,<span style="color: #d3869b; font-weight: bold;">7</span>]]
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org811a2f6" class="outline-5">
+<h5 id="org811a2f6"><span class="section-number-5">1.8.3.2</span> alias</h5>
+<div class="outline-text-5" id="text-1-8-3-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">myFunc</span>() <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">alias</span> <span style="color: #8ec07c;">My.Other.Module.Parse</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">adds Parse as alias</span>
+  <span style="color: #fb4934;">alias</span> <span style="color: #8ec07c;">My.Other.Module.Parse</span>, <span style="color: #83a598;">as:</span> <span style="color: #8ec07c;">Parser</span> <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">renames alias</span>
+  <span style="color: #fb4934;">alias</span> <span style="color: #8ec07c;">Sayings</span>.{<span style="color: #8ec07c;">Greetings</span>, <span style="color: #8ec07c;">Farewells</span>} <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">multiple aliases</span>
+  <span style="color: #8ec07c;">Parser</span>.parse()
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b8030c" class="outline-5">
+<h5 id="org7b8030c"><span class="section-number-5">1.8.3.3</span> require</h5>
+<div class="outline-text-5" id="text-1-8-3-3">
+<p>
+We could use require to tell Elixir you’re going to use macros from other
+module. The slight difference with <code>import</code> is that it allows using macros,
+but not functions from the specified module.
+</p>
+</div>
+</div>
+<div id="outline-container-org0d988c1" class="outline-5">
+<h5 id="org0d988c1"><span class="section-number-5">1.8.3.4</span> use</h5>
+<div class="outline-text-5" id="text-1-8-3-4">
+<p>
+With the use macro we can enable another module to modify our current module’s definition.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Hello</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">defmacro</span> __using__(<span style="color: #7c6f64;">_opts</span>) <span style="color: #fb4934;">do</span>
+    <span style="color: #fb4934;">quote</span> <span style="color: #fb4934;">do</span>
+      <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">hello</span>(name), <span style="color: #83a598;">do:</span> <span style="color: #b8bb26;">"Hi, </span><span style="color: #83a598;">#{name}</span><span style="color: #b8bb26;">"</span>
+    <span style="color: #fb4934;">end</span>
+  <span style="color: #fb4934;">end</span>
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Example</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">use</span> <span style="color: #8ec07c;">Hello</span>
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #8ec07c;">Example</span>.hello(<span style="color: #b8bb26;">"Sean"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2bc89fe" class="outline-4">
+<h4 id="org2bc89fe"><span class="section-number-4">1.8.4</span> Module attributes</h4>
+<div class="outline-text-4" id="text-1-8-4">
+<p>
+Elixir modules each have associated metadata.
+</p>
+
+<p>
+We use them mostly for configuration and metadata only (like Java programmers
+might use constants)
+</p>
+
+<p>
+You can&rsquo;t set an attribute inside a function definition, only at the top
+level of a module.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">MyModule</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #d3869b;">@author</span> <span style="color: #b8bb26;">"Bojan"</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">get_author</span>, <span style="color: #83a598;">do:</span> <span style="color: #d3869b;">@author</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeacdd44" class="outline-4">
+<h4 id="orgeacdd44"><span class="section-number-4">1.8.5</span> Module names</h4>
+<div class="outline-text-4" id="text-1-8-5">
+<p>
+Module names are just atoms. When you write a name starting with an uppercase
+letter, such as <code>IO</code>, Elixir converts it internally into an atom of the same
+name with <code>Elixir.</code> prepended. So, <code>IO</code> becomse <code>Elixir.IO</code>, and <code>Dog</code>
+becomes <code>Elixir.Dog</code>.
+</p>
+
+<p>
+When we&rsquo;re calling stuff from Erlang, we use colon:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">:io</span>.format(<span style="color: #b8bb26;">"The number is ~3.1f~n"</span>, [<span style="color: #d3869b; font-weight: bold;">5.678</span>])
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf6ba0c" class="outline-3">
+<h3 id="orgaf6ba0c"><span class="section-number-3">1.9</span> Documentation</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+<div id="outline-container-org3ca4edc" class="outline-4">
+<h4 id="org3ca4edc"><span class="section-number-4">1.9.1</span> Inline documentation</h4>
+<div class="outline-text-4" id="text-1-9-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">Outputs 'Hello, chum.' to the console.</span>
+<span style="color: #8ec07c;">IO</span>.puts(<span style="color: #b8bb26;">"Hello, "</span> &lt;&gt; <span style="color: #b8bb26;">"chum."</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org64496a8" class="outline-4">
+<h4 id="org64496a8"><span class="section-number-4">1.9.2</span> Documenting modules</h4>
+<div class="outline-text-4" id="text-1-9-2">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">Greeter</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #d3869b;">@moduledoc</span> <span style="color: #ada296;">"""</span>
+<span style="color: #ada296;">  Provides a function `hello/1` to greet a human</span>
+<span style="color: #ada296;">  """</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">hello</span>(name) <span style="color: #fb4934;">do</span>
+    <span style="color: #b8bb26;">"Hello, "</span> &lt;&gt; name
+  <span style="color: #fb4934;">end</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org506aae2" class="outline-4">
+<h4 id="org506aae2"><span class="section-number-4">1.9.3</span> Documenting functions</h4>
+<div class="outline-text-4" id="text-1-9-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #d3869b;">@doc</span> <span style="color: #ada296;">"""</span>
+<span style="color: #ada296;">Prints a hello message</span>
+
+<span style="color: #ada296;">## Parameters</span>
+
+<span style="color: #ada296;">- name: String that represents the name of the person.</span>
+
+<span style="color: #ada296;">## Examples</span>
+
+<span style="color: #ada296;">iex&gt; Greeter.hello("Sean")</span>
+<span style="color: #ada296;">"Hello, Sean"</span>
+
+<span style="color: #ada296;">iex&gt; Greeter.hello("pete")</span>
+<span style="color: #ada296;">"Hello, pete"</span>
+
+<span style="color: #ada296;">"""</span>
+<span style="color: #d3869b;">@spec</span> hello(<span style="color: #8ec07c;">String</span>.t()) :: <span style="color: #8ec07c;">String</span>.t()
+<span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">hello</span>(name) <span style="color: #fb4934;">do</span>
+  <span style="color: #b8bb26;">"Hello, "</span> &lt;&gt; name
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1bb2cae" class="outline-4">
+<h4 id="org1bb2cae"><span class="section-number-4">1.9.4</span> ExDoc</h4>
+<div class="outline-text-4" id="text-1-9-4">
+<p>
+It&rsquo;s project that produces HTML and online documentation for Elixir projects.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc667115" class="outline-3">
+<h3 id="orgc667115"><span class="section-number-3">1.10</span> IEX (Interactive Elixir)</h3>
+<div class="outline-text-3" id="text-1-10">
+</div>
+<div id="outline-container-org3272496" class="outline-4">
+<h4 id="org3272496"><span class="section-number-4">1.10.1</span> Executing script to setup IEX session</h4>
+<div class="outline-text-4" id="text-1-10-1">
+<p>
+We just add <code>.iex.exs</code> script file inside directory where we&rsquo;re gonna run
+IEX command. And in that scrip we should &ldquo;preload&rdquo; everything we need for
+the sesssion, like adding aliases etc.
+</p>
+</div>
+</div>
+<div id="outline-container-org201f256" class="outline-4">
+<h4 id="org201f256"><span class="section-number-4">1.10.2</span> How to execute script while in IEX</h4>
+<div class="outline-text-4" id="text-1-10-2">
+<div class="org-src-container">
+<pre class="src src-shell">iex&gt; c <span style="color: #b8bb26;">"script.exs"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd448c7" class="outline-4">
+<h4 id="orgcd448c7"><span class="section-number-4">1.10.3</span> Getting help</h4>
+<div class="outline-text-4" id="text-1-10-3">
+<p>
+Help for <code>Enum.map</code> function:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">iex&gt; h Enum.map
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4ebfcde" class="outline-4">
+<h4 id="org4ebfcde"><span class="section-number-4">1.10.4</span> Info about value</h4>
+<div class="outline-text-4" id="text-1-10-4">
+<div class="org-src-container">
+<pre class="src src-shell">iex&gt; i :test
+Term
+:test
+Data type
+Atom
+Reference modules
+Atom
+Implemented protocols
+IEx.Info, String.Chars, Inspect, List.Chars
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d69bf5" class="outline-3">
+<h3 id="org5d69bf5"><span class="section-number-3">1.11</span> Code styling</h3>
+<div class="outline-text-3" id="text-1-11">
+</div>
+<div id="outline-container-org9243184" class="outline-4">
+<h4 id="org9243184"><span class="section-number-4">1.11.1</span> Use two-column indentation and spaces (not tabs)</h4>
+</div>
+<div id="outline-container-orgb3cb42d" class="outline-4">
+<h4 id="orgb3cb42d"><span class="section-number-4">1.11.2</span> Functions that returns a boolean</h4>
+<div class="outline-text-4" id="text-1-11-2">
+<p>
+They should end with question mark <code>?</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">zero?</span>(<span style="color: #d3869b; font-weight: bold;">0</span>) <span style="color: #fb4934;">do</span>
+  <span style="color: #83a598;">true</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org05d768d" class="outline-4">
+<h4 id="org05d768d"><span class="section-number-4">1.11.3</span> Functions that raise an exception</h4>
+<div class="outline-text-4" id="text-1-11-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">File</span>.open!
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb183933" class="outline-3">
+<h3 id="orgb183933"><span class="section-number-3">1.12</span> Scope</h3>
+<div class="outline-text-3" id="text-1-12">
+</div>
+<div id="outline-container-org551c751" class="outline-4">
+<h4 id="org551c751"><span class="section-number-4">1.12.1</span> Types</h4>
+<div class="outline-text-4" id="text-1-12-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Function scope</td>
+<td class="org-left">Variable defined in function = visible in function</td>
+</tr>
+
+<tr>
+<td class="org-left">Module scope</td>
+<td class="org-left">Variable defined in module = visible in module, but not in functions in the module</td>
+</tr>
+
+<tr>
+<td class="org-left">with</td>
+<td class="org-left">Variable visible only in <code>with</code> block, used for temp calculations</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org56edd1e" class="outline-3">
+<h3 id="org56edd1e"><span class="section-number-3">1.13</span> Concurrency</h3>
+<div class="outline-text-3" id="text-1-13">
+</div>
+<div id="outline-container-orgf3b23e8" class="outline-4">
+<h4 id="orgf3b23e8"><span class="section-number-4">1.13.1</span> Actor model of concurrency</h4>
+<div class="outline-text-4" id="text-1-13-1">
+<p>
+An <b>actor</b> is an independent process that shares nothing with any other
+process. You can spawn new processes, send them messages, and receive
+messages back.
+</p>
+</div>
+</div>
+<div id="outline-container-org5c5480a" class="outline-4">
+<h4 id="org5c5480a"><span class="section-number-4">1.13.2</span> Linking processes</h4>
+<div class="outline-text-4" id="text-1-13-2">
+<p>
+We can link 2 processes, so that they are aware if other process dies.
+If other process dies, all related processes die by default.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbf3975b" class="outline-4">
+<h4 id="orgbf3975b"><span class="section-number-4">1.13.3</span> Montiroing processes</h4>
+<div class="outline-text-4" id="text-1-13-3">
+<p>
+Unlike with linked processes, one process can monitor other process, and be
+notified if monitored process ended. But, unlike with <a href="#org5c5480a">linked processes</a>,
+monitored process doesn&rsquo;t receive termination signal of monitoring process.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd347a03" class="outline-4">
+<h4 id="orgd347a03"><span class="section-number-4">1.13.4</span> Parallel Map</h4>
+<div class="outline-text-4" id="text-1-13-4">
+<p>
+It&rsquo;s like <code>map</code>, but it applies the function to each element in a separate
+process.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c6714e" class="outline-4">
+<h4 id="org9c6714e"><span class="section-number-4">1.13.5</span> Nodes</h4>
+<div class="outline-text-4" id="text-1-13-5">
+</div>
+<div id="outline-container-orge2a4b6d" class="outline-5">
+<h5 id="orge2a4b6d"><span class="section-number-5">1.13.5.1</span> What are they</h5>
+<div class="outline-text-5" id="text-1-13-5-1">
+<p>
+Node is a running Erlang VM.
+We can connect nodes, and start running functions from one node to another node.
+</p>
+</div>
+</div>
+<div id="outline-container-org20ca15a" class="outline-5">
+<h5 id="org20ca15a"><span class="section-number-5">1.13.5.2</span> Security</h5>
+<div class="outline-text-5" id="text-1-13-5-2">
+<p>
+You can protect node with a cookie. So connecting node must provide the cookie.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0297be4" class="outline-3">
+<h3 id="org0297be4"><span class="section-number-3">1.14</span> Other</h3>
+<div class="outline-text-3" id="text-1-14">
+</div>
+<div id="outline-container-org19595db" class="outline-4">
+<h4 id="org19595db"><span class="section-number-4">1.14.1</span> Enum.reverse</h4>
+<div class="outline-text-4" id="text-1-14-1">
+<p>
+It&rsquo;s very common pattern to produce result by iteration/recursion. That
+result is often in reversed order. That&rsquo;s why we use <code>Enum.reverese</code> to
+reverse order, which is highly optimized.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org54302a3" class="outline-3">
+<h3 id="org54302a3"><span class="section-number-3">1.15</span> Elixir internals</h3>
+<div class="outline-text-3" id="text-1-15">
+</div>
+<div id="outline-container-orgf6f0795" class="outline-4">
+<h4 id="orgf6f0795"><span class="section-number-4">1.15.1</span> Performance</h4>
+<div class="outline-text-4" id="text-1-15-1">
+</div>
+<div id="outline-container-orgd5e37d8" class="outline-5">
+<h5 id="orgd5e37d8"><span class="section-number-5">1.15.1.1</span> Immutability</h5>
+<div class="outline-text-5" id="text-1-15-1-1">
+<p>
+We don&rsquo;t change list when we add new element: we create new one. This will
+not create new list in memory. Since everything is immutable in Elixir, new list
+will be created by resuing old list, and appending new element.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c65f84" class="outline-5">
+<h5 id="org9c65f84"><span class="section-number-5">1.15.1.2</span> Garbage collection</h5>
+<div class="outline-text-5" id="text-1-15-1-2">
+<p>
+All code runs in processes. Processes are isolated from each other. Each has
+it&rsquo;s own heap. That&rsquo;s why garbage collection runs faster. For e.g. if
+process terminates, there&rsquo;s no garbage collection required.
+</p>
+
+<p>
+Atoms are not garbage collected, to don&rsquo;t use them when returning results from
+database.
+</p>
+</div>
+</div>
+<div id="outline-container-org41e464d" class="outline-5">
+<h5 id="org41e464d"><span class="section-number-5">1.15.1.3</span> Tail-call optimization</h5>
+<div class="outline-text-5" id="text-1-15-1-3">
+<p>
+When doing multiple recursive calls, we&rsquo;re not producing multiple stacks.
+This doesn’t happen in Elixir, as it implements tail-call optimization. If
+the last thing a function does is call itself, there’s no need to make the
+call. Instead, the runtime simply jumps back to the start of the function.
+If the recursive call has arguments, then these replace the original
+parameters. But beware—the recursive call must be the very last thing
+executed.
+</p>
+
+<p>
+This doesn&rsquo;t have tail-call optimization:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(<span style="color: #d3869b; font-weight: bold;">0</span>), <span style="color: #83a598;">do:</span> <span style="color: #d3869b; font-weight: bold;">1</span>
+<span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(n), <span style="color: #83a598;">do:</span> n * factorial(n-<span style="color: #d3869b; font-weight: bold;">1</span>)
+</pre>
+</div>
+
+<p>
+But we can make it happen like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">TailRecursive</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">factorial</span>(n), <span style="color: #83a598;">do:</span> <span style="color: #7c6f64;">_fact</span>(n, <span style="color: #d3869b; font-weight: bold;">1</span>)
+  <span style="color: #fb4934;">defp</span> <span style="color: #8ec07c;">_fact</span>(<span style="color: #d3869b; font-weight: bold;">0</span>, acc), <span style="color: #83a598;">do:</span> acc
+  <span style="color: #fb4934;">defp</span> <span style="color: #8ec07c;">_fact</span>(n, acc), <span style="color: #83a598;">do:</span> <span style="color: #7c6f64;">_fact</span>(n-<span style="color: #d3869b; font-weight: bold;">1</span>, acc*n)
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfe961c4" class="outline-3">
+<h3 id="orgfe961c4"><span class="section-number-3">1.16</span> Tools</h3>
+<div class="outline-text-3" id="text-1-16">
+</div>
+<div id="outline-container-orgfa1b5f9" class="outline-4">
+<h4 id="orgfa1b5f9"><span class="section-number-4">1.16.1</span> Mix</h4>
+<div class="outline-text-4" id="text-1-16-1">
+<ul class="org-ul">
+<li>creates projects</li>
+<li>compiles projects</li>
+<li>runs &rsquo;tasks&rsquo;</li>
+<li>manages dependencies</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9cf8a17" class="outline-2">
+<h2 id="org9cf8a17"><span class="section-number-2">2</span> Cheatsheet</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org5bd0abc" class="outline-3">
+<h3 id="org5bd0abc"><span class="section-number-3">2.1</span> Create projects</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+mix new &lt;project name&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-org2f20a7d" class="outline-3">
+<h3 id="org2f20a7d"><span class="section-number-3">2.2</span> Run interactive shell</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+iex -S mix
+</p>
+</div>
+</div>
+<div id="outline-container-org11829e3" class="outline-3">
+<h3 id="org11829e3"><span class="section-number-3">2.3</span> How to execute script while in IEX</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-shell">iex&gt; c <span style="color: #b8bb26;">"script.exs"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd3f0de9" class="outline-3">
+<h3 id="orgd3f0de9"><span class="section-number-3">2.4</span> PID of current process</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-shell">self
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org38bd237" class="outline-3">
+<h3 id="org38bd237"><span class="section-number-3">2.5</span> Files</h3>
+<div class="outline-text-3" id="text-2-5">
+</div>
+<div id="outline-container-orga6280e0" class="outline-5">
+<h5 id="orga6280e0"><span class="section-number-5">2.5.0.1</span> Open</h5>
+<div class="outline-text-5" id="text-2-5-0-1">
+<div class="org-src-container">
+<pre class="src src-elixir">{status, file} = <span style="color: #8ec07c;">File</span>.open(<span style="color: #b8bb26;">"test.txt"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org23b224f" class="outline-5">
+<h5 id="org23b224f"><span class="section-number-5">2.5.0.2</span> Read</h5>
+<div class="outline-text-5" id="text-2-5-0-2">
+<div class="org-src-container">
+<pre class="src src-elixir">{status, content} = <span style="color: #8ec07c;">File</span>.read(<span style="color: #b8bb26;">"test.txt"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd615b71" class="outline-3">
+<h3 id="orgd615b71"><span class="section-number-3">2.6</span> Map</h3>
+<div class="outline-text-3" id="text-2-6">
+</div>
+<div id="outline-container-org068b775" class="outline-5">
+<h5 id="org068b775"><span class="section-number-5">2.6.0.1</span> Declaring</h5>
+<div class="outline-text-5" id="text-2-6-0-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">states</span> = %{<span style="color: #b8bb26;">"Al"</span> =&gt; <span style="color: #b8bb26;">"Alabama"</span>, <span style="color: #b8bb26;">"WI"</span> =&gt; <span style="color: #b8bb26;">"Wisconsin"</span>}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org583e009" class="outline-5">
+<h5 id="org583e009"><span class="section-number-5">2.6.0.2</span> Accessing values</h5>
+<div class="outline-text-5" id="text-2-6-0-2">
+<div class="org-src-container">
+<pre class="src src-elixir">states[<span style="color: #b8bb26;">"AL"</span>]
+
+<span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">If keys are atoms</span>
+<span style="color: #83a598;">colors</span> = %{<span style="color: #83a598;">red:</span> 0xf00, <span style="color: #83a598;">green:</span> 0x0f0, <span style="color: #83a598;">blue:</span> 0x00f}
+colors[<span style="color: #83a598;">:red</span>]
+colors.red
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6aac63e" class="outline-5">
+<h5 id="org6aac63e"><span class="section-number-5">2.6.0.3</span> Updating</h5>
+<div class="outline-text-5" id="text-2-6-0-3">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">new_map</span> = %{ old_map | key =&gt; value, another_key =&gt; another_value }
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9e95fd6" class="outline-3">
+<h3 id="org9e95fd6"><span class="section-number-3">2.7</span> Date/Time</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<div id="outline-container-org9ed73a3" class="outline-5">
+<h5 id="org9ed73a3"><span class="section-number-5">2.7.0.1</span> Date</h5>
+<div class="outline-text-5" id="text-2-7-0-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">d</span> = <span style="color: #8ec07c;">Date</span>.new(<span style="color: #d3869b; font-weight: bold;">2018</span>, <span style="color: #d3869b; font-weight: bold;">12</span>, <span style="color: #d3869b; font-weight: bold;">25</span>)
+<span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">Sigils</span>
+<span style="color: #83a598;">d</span> = <span style="color: #fe8019;">~D</span>[<span style="color: #d3869b; font-weight: bold;">2018</span>-<span style="color: #d3869b; font-weight: bold;">12</span>-<span style="color: #d3869b; font-weight: bold;">25</span>]
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org463a2f4" class="outline-3">
+<h3 id="org463a2f4"><span class="section-number-3">2.8</span> Strings</h3>
+<div class="outline-text-3" id="text-2-8">
+</div>
+<div id="outline-container-org6ca258e" class="outline-5">
+<h5 id="org6ca258e"><span class="section-number-5">2.8.0.1</span> Concat</h5>
+<div class="outline-text-5" id="text-2-8-0-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #b8bb26;">"StringA"</span> &lt;&gt; <span style="color: #b8bb26;">" "</span> &lt;&gt; <span style="color: #b8bb26;">"StringB"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Bojan Petrovic</p>
+<p class="date">Created: 2020-03-11 Wed 09:07</p>
+</div>
+</body>
+</html>

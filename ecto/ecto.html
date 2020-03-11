@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-03-11 Wed 09:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ecto</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Bojan Petrovic" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<style>pre.src {background-color: #303030; color: #e5e5e5;}</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Ecto</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org42f96f8">1. Notes</a>
+<ul>
+<li><a href="#org15169e4">1.1. Repo pattern</a></li>
+<li><a href="#orgd0b7c0f">1.2. Packages</a></li>
+<li><a href="#orgadaffb6">1.3. Pin operator</a></li>
+<li><a href="#org9aabf3d">1.4. Query binding</a></li>
+<li><a href="#org8e4bd4e">1.5. Composing queries</a></li>
+<li><a href="#org469bfd7">1.6. Combining results</a></li>
+<li><a href="#orgef70ab5">1.7. Schemas</a></li>
+<li><a href="#orgbd0a8b8">1.8. Associations</a>
+<ul>
+<li><a href="#org61de3a0">1.8.1. Nested associations</a></li>
+<li><a href="#orgc9b8f0a">1.8.2. M:N</a></li>
+<li><a href="#orgbee8143">1.8.3. Inserting associated item</a></li>
+</ul>
+</li>
+<li><a href="#org1c5efe7">1.9. Changesets</a>
+<ul>
+<li><a href="#orgf02ce0d">1.9.1. Casting and filtering</a>
+<ul>
+<li><a href="#org2f68668">1.9.1.1. Input data is comming from</a>
+<ul>
+<li><a href="#orgfb534bb">1.9.1.1.1. Our own system</a></li>
+<li><a href="#org7ee4a6f">1.9.1.1.2. From outside</a>
+<ul>
+<li><a href="#orgf2cbfde">1.9.1.1.2.1. nil</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge71d4e1">1.9.2. Validating</a></li>
+<li><a href="#org7347703">1.9.3. Sendig data to database and capturing result</a></li>
+<li><a href="#org826b97e">1.9.4. Using changeset when not working with database</a></li>
+<li><a href="#org487ec64">1.9.5. Associations</a>
+<ul>
+<li><a href="#org321536d">1.9.5.1. When we need to add new associated record</a></li>
+<li><a href="#orge27d981">1.9.5.2. When working with individual records of association</a></li>
+<li><a href="#orgb2e849a">1.9.5.3. When working with collection at once</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org167871d">1.10. Transactions</a></li>
+<li><a href="#org2510741">1.11. Repo</a></li>
+<li><a href="#org7db68ca">1.12. N+1 Query problem</a></li>
+</ul>
+</li>
+<li><a href="#org024623c">2. Cheatsheet</a>
+<ul>
+<li><a href="#orgbdd0b75">2.1. Mix</a></li>
+<li><a href="#org286a595">2.2. Configuration</a></li>
+<li><a href="#orgd6eee5b">2.3. Changesets</a>
+<ul>
+<li><a href="#org5808971">2.3.1. What should be treated as nil</a></li>
+<li><a href="#org7f5ac16">2.3.2. Validation</a>
+<ul>
+<li><a href="#orga7df56a">2.3.2.1. Validating</a></li>
+<li><a href="#orgc8ade94">2.3.2.2. Custom validation</a></li>
+<li><a href="#org50876e4">2.3.2.3. Get error messages in a nicer map form</a></li>
+<li><a href="#orga69ba79">2.3.2.4. Perform constraint with validations, so it&rsquo;s showed up in changeset.errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org01e71d4">2.4. Insert new record</a></li>
+<li><a href="#org7b57a42">2.5. Group and Having</a></li>
+<li><a href="#org084849d">2.6. Inserting parent and child</a></li>
+<li><a href="#org7dbe358">2.7. Adding associated record</a></li>
+<li><a href="#orgf1fdc31">2.8. Nested association</a></li>
+<li><a href="#org7de9e93">2.9. M:N</a></li>
+<li><a href="#org75f488e">2.10. Preloading associations</a></li>
+<li><a href="#orgc0c3714">2.11. Transaction</a></li>
+<li><a href="#orgd3c9d16">2.12. Executing Raw SQL</a>
+<ul>
+<li><a href="#org2d33bbe">2.12.1. Whole SQL as raw SQL</a></li>
+<li><a href="#orgd44c8ad">2.12.2. Just fragment as raw SQL</a></li>
+</ul>
+</li>
+<li><a href="#orgc71463f">2.13. Extending Repo</a></li>
+<li><a href="#orga50acfe">2.14. Preview generated SQL</a></li>
+<li><a href="#org6e5c207">2.15. Using an expression in query</a></li>
+<li><a href="#org57c3231">2.16. Combining results</a>
+<ul>
+<li><a href="#org67d242e">2.16.1. Union (without duplicates)</a></li>
+<li><a href="#org8a018d7">2.16.2. Union (with duplicates)</a></li>
+</ul>
+</li>
+<li><a href="#org504d27e">2.17. Returning result as list of maps</a></li>
+<li><a href="#org12d06ff">2.18. Composing queries</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org42f96f8" class="outline-2">
+<h2 id="org42f96f8"><span class="section-number-2">1</span> Notes</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org15169e4" class="outline-3">
+<h3 id="org15169e4"><span class="section-number-3">1.1</span> Repo pattern</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+In Ecto, nothing happens unless you call method on <code>Repo</code> module. Unlike
+active records, Ecto is explicit about everything.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd0b7c0f" class="outline-3">
+<h3 id="orgd0b7c0f"><span class="section-number-3">1.2</span> Packages</h3>
+<div class="outline-text-3" id="text-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">package</th>
+<th scope="col" class="org-left">usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ecto</td>
+<td class="org-left">core, which we can use without database</td>
+</tr>
+
+<tr>
+<td class="org-left">ecto<sub>sql</sub></td>
+<td class="org-left">needed when workig with relationtal databases</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+When we need <code>ecto_sql</code>, we don&rsquo;t have to explicitly require for <code>ecto</code>
+package because it is a dependency on <code>ecto_sql</code> package.
+</p>
+</div>
+</div>
+<div id="outline-container-orgadaffb6" class="outline-3">
+<h3 id="orgadaffb6"><span class="section-number-3">1.3</span> Pin operator</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+We can use pin operator (<code>^</code>) to use expressions in queries:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">q</span> = from <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">where:</span> [<span style="color: #83a598;">name:</span> ^artist_name], <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+<span style="color: #83a598;">q</span> = from <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">where:</span> [<span style="color: #83a598;">name:</span> ^(<span style="color: #b8bb26;">"Bill"</span> &lt;&gt; <span style="color: #b8bb26;">"Evans"</span>], <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+</pre>
+</div>
+<p>
+Any value added by pin operator become parametrized value. That way pin
+operator protects us from SQL injection.
+</p>
+</div>
+</div>
+<div id="outline-container-org9aabf3d" class="outline-3">
+<h3 id="org9aabf3d"><span class="section-number-3">1.4</span> Query binding</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+We can refer to table throughout query by using query binding:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">q</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">where:</span> a.name == <span style="color: #b8bb26;">"Bill Evans"</span>, <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8e4bd4e" class="outline-3">
+<h3 id="org8e4bd4e"><span class="section-number-3">1.5</span> Composing queries</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Instead of writing one big query, we can create it from couple of smaller reusable queries:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">albums_by_miles</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"albums"</span>, <span style="color: #83a598;">as:</span> <span style="color: #83a598;">:albums</span>,
+  <span style="color: #83a598;">join:</span> ar <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>, as <span style="color: #83a598;">:artists</span>,
+  <span style="color: #83a598;">on:</span> a.artist_id == ar.id, <span style="color: #83a598;">where:</span> ar.name == <span style="color: #b8bb26;">"Miles Davis"</span>
+
+<span style="color: #83a598;">album_query</span> = from [<span style="color: #83a598;">artists:</span> ar, albums, a] <span style="color: #fb4934;">in</span> albums_by_miles,
+  <span style="color: #83a598;">select:</span> [a.title, ar.name]
+</pre>
+</div>
+
+<p>
+We can also use functions to create queries, to make everything cleaner:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">by_artist</span>(query, artist_name) <span style="color: #fb4934;">do</span>
+  from a <span style="color: #fb4934;">in</span> query,
+    <span style="color: #83a598;">join:</span> ar <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">on:</span> a.artist_id == ar.id,
+    <span style="color: #83a598;">where:</span> ar.name == ^artist_name
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">with_tracks_longer_than</span>(query, duration) <span style="color: #fb4934;">do</span>
+  fron a <span style="color: #fb4934;">in</span> query,
+    <span style="color: #83a598;">join:</span> t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>, <span style="color: #83a598;">on:</span> t.album_id == a.id,
+    <span style="color: #83a598;">where:</span> t.duration &gt; ^duration,
+    distinct:true
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">title_only</span>(query) <span style="color: #fb4934;">do</span>
+  from a <span style="color: #fb4934;">in</span> query, <span style="color: #83a598;">select:</span> a.title
+<span style="color: #fb4934;">end</span>
+
+<span style="color: #83a598;">q</span> = <span style="color: #b8bb26;">"albums"</span>
+|&gt; by_artist(<span style="color: #b8bb26;">"Miles Davis"</span>)
+|&gt; with_tracks_longer_than(<span style="color: #d3869b; font-weight: bold;">720</span>)
+|&gt; title_only
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org469bfd7" class="outline-3">
+<h3 id="org469bfd7"><span class="section-number-3">1.6</span> Combining results</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+We can combine results of different queries ony if they have results sets
+with the same column names and data types.
+</p>
+
+<p>
+When using for e.g. <code>union:</code>, results will not contain duplicates. But that
+can have performance impact on database. If we don&rsquo;t care about duplicates,
+we can use instead <code>:union_all</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgef70ab5" class="outline-3">
+<h3 id="orgef70ab5"><span class="section-number-3">1.7</span> Schemas</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+We don&rsquo;t have to use them everywhere. For e.g. queries for reports shouldn&rsquo;t require schemas.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd0a8b8" class="outline-3">
+<h3 id="orgbd0a8b8"><span class="section-number-3">1.8</span> Associations</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-org61de3a0" class="outline-4">
+<h4 id="org61de3a0"><span class="section-number-4">1.8.1</span> Nested associations</h4>
+<div class="outline-text-4" id="text-1-8-1">
+<p>
+Let&rsquo;s say Artist have many Albums, and Album have many Tracks. If we want
+to access all tracks directly from artist, we would use nested association:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">schema <span style="color: #b8bb26;">"artists"</span> <span style="color: #fb4934;">do</span>
+  has_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>
+  has_many <span style="color: #83a598;">:tracks</span>, <span style="color: #83a598;">through:</span> [<span style="color: #83a598;">:albums</span>, <span style="color: #83a598;">:tracks</span>]
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+But you cannot use <code>belongs_to</code> to access artist from track directly: you
+have to go <code>track.album.artist</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc9b8f0a" class="outline-4">
+<h4 id="orgc9b8f0a"><span class="section-number-4">1.8.2</span> M:N</h4>
+<div class="outline-text-4" id="text-1-8-2">
+<p>
+If we need to add extra data to linking table, we need to explicitly add
+schema for it:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">schema <span style="color: #b8bb26;">"albums"</span> <span style="color: #fb4934;">do</span>
+  many_to_many <span style="color: #83a598;">:genres</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #8ec07c;">MusicDB.AlbumGenre</span>
+<span style="color: #fb4934;">end</span>
+
+schema <span style="color: #b8bb26;">"genres"</span> <span style="color: #fb4934;">do</span>
+  many_to_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #8ec07c;">MusicDB.AlbumGenre</span>
+<span style="color: #fb4934;">end</span>
+
+schema <span style="color: #b8bb26;">"albums_genres"</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">extra fields definitions</span>
+  belongs_to <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>
+  belongs_to <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>
+</pre>
+</div>
+<p>
+Otherwise, we can just use string.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">schema <span style="color: #b8bb26;">"albums"</span> <span style="color: #fb4934;">do</span>
+  many_to_many <span style="color: #83a598;">:genres</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #b8bb26;">"albums_genre"</span>
+<span style="color: #fb4934;">end</span>
+
+schema <span style="color: #b8bb26;">"genres"</span> <span style="color: #fb4934;">do</span>
+  many_to_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #b8bb26;">"albums_genre"</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbee8143" class="outline-4">
+<h4 id="orgbee8143"><span class="section-number-4">1.8.3</span> Inserting associated item</h4>
+<div class="outline-text-4" id="text-1-8-3">
+<p>
+If we want to insert parent and child at the same time:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #8ec07c;">Repo</span>.insert(
+  <span style="color: #8ec07c;">%Artist</span>{
+    <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"John Coltraine"</span>,
+    <span style="color: #83a598;">albums:</span> [
+      <span style="color: #8ec07c;">%Album</span>{
+        <span style="color: #83a598;">title:</span> <span style="color: #b8bb26;">"A love supreme"</span>
+      }
+    ]
+  }
+)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1c5efe7" class="outline-3">
+<h3 id="org1c5efe7"><span class="section-number-3">1.9</span> Changesets</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+They help us make changes to database in a secure way.
+</p>
+
+<p>
+There are 3 phases that are executed by changesets when changes are stored in database:
+</p>
+<ol class="org-ol">
+<li>Casting and filtering</li>
+<li>Validation</li>
+<li>Sendig data to database and capturing result</li>
+</ol>
+</div>
+<div id="outline-container-orgf02ce0d" class="outline-4">
+<h4 id="orgf02ce0d"><span class="section-number-4">1.9.1</span> Casting and filtering</h4>
+<div class="outline-text-4" id="text-1-9-1">
+<p>
+Here we:
+</p>
+<ul class="org-ul">
+<li>filter out which data we want to store</li>
+<li>cast data (like casting &ldquo;2018-01-01&rdquo; to real date)</li>
+</ul>
+</div>
+<div id="outline-container-org2f68668" class="outline-5">
+<h5 id="org2f68668"><span class="section-number-5">1.9.1.1</span> Input data is comming from</h5>
+<div class="outline-text-5" id="text-1-9-1-1">
+</div>
+<div id="outline-container-orgfb534bb" class="outline-6">
+<h6 id="orgfb534bb"><span class="section-number-6">1.9.1.1.1</span> Our own system</h6>
+<div class="outline-text-6" id="text-1-9-1-1-1">
+<p>
+If we &ldquo;own&rdquo; the data that needs to be inserted, we use <code>change</code> function:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">import</span> <span style="color: #8ec07c;">Ecto.Changeset</span>
+<span style="color: #83a598;">changeset</span> = change(<span style="color: #8ec07c;">%Artist</span>{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"James"</span>})
+changeset.changes <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; %{name: "James"}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ee4a6f" class="outline-6">
+<h6 id="org7ee4a6f"><span class="section-number-6">1.9.1.1.2</span> From outside</h6>
+<div class="outline-text-6" id="text-1-9-1-1-2">
+<p>
+If data is comming from &ldquo;outside&rdquo; (like from web form), we use <code>cast</code> function:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"Charlie Parker"</span>, <span style="color: #b8bb26;">"birth_date"</span> =&gt; <span style="color: #b8bb26;">"1920-08-29"</span>,
+           <span style="color: #b8bb26;">"instrument"</span> =&gt; <span style="color: #b8bb26;">"alto sax"</span>}
+
+<span style="color: #83a598;">changeset</span> = cast(<span style="color: #8ec07c;">%Artist</span>{}, params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+changeset.changes
+<span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; %{birth_date: ~D[1920-08-29], name: "Charlie Parker"}</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf2cbfde" class="outline-7">
+<h7 id="orgf2cbfde"><span class="section-number-7">1.9.1.1.2.1</span> nil</h7>
+<div class="outline-text-7" id="text-1-9-1-1-2-1">
+<p>
+By default, the <code>cast</code> function will treat the empty string <code>""</code> as <code>nil</code> when creating the changeset. We can also declare what should be treated as <code>nil</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"Charlie Parker"</span>, <span style="color: #b8bb26;">"birth_date"</span> =&gt; <span style="color: #b8bb26;">"NULL"</span>}
+<span style="color: #83a598;">changeset</span> = cast(<span style="color: #8ec07c;">%Artist</span>{}, params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>],
+  <span style="color: #83a598;">empty_values:</span> [<span style="color: #b8bb26;">""</span>, <span style="color: #b8bb26;">"NULL"</span>])
+changeset.changes
+<span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; %{name: "Charlie Parker"}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge71d4e1" class="outline-4">
+<h4 id="orge71d4e1"><span class="section-number-4">1.9.2</span> Validating</h4>
+<div class="outline-text-4" id="text-1-9-2">
+<p>
+There are 2 types of validation:
+</p>
+<ul class="org-ul">
+<li><b>validations</b>
+<ul class="org-ul">
+<li>performed without contacting database</li>
+<li>all validations are ran to collect as much errors</li>
+</ul></li>
+<li><b>constraints</b>
+<ul class="org-ul">
+<li>used for database constraints (like checking if something is unique)</li>
+<li>they are executed only when interacting with database</li>
+<li>will not be reported in chanteset&rsquo;s <code>errors</code> field</li>
+</ul></li>
+</ul>
+
+
+<p>
+If one constraint fails, the others won&rsquo;t be checked.
+If any validations fail, the constraints are not checked at all. Ecto won&rsquo;t
+bother trying to send a changeset to the database if it fails validtion.
+</p>
+
+<p>
+Problem with constraints is that they are checked after all validations are
+done. But if we have a long form, and we want to check if username is taken
+or not, we&rsquo;ll find out after all validations have been ran. Sometimes we
+want to check some constraints with validations (and to be shown in
+<code>errors</code> field). For e.g. we want to check if <code>name</code> is unique. For that we
+use <code>unsafe_validate_unique</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org7347703" class="outline-4">
+<h4 id="org7347703"><span class="section-number-4">1.9.3</span> Sendig data to database and capturing result</h4>
+<div class="outline-text-4" id="text-1-9-3">
+<p>
+This is usual way of sending data to database, and capturing all errors:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">params</span> = %{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Gene Harris"</span>}
+<span style="color: #83a598;">changeset</span> =
+  <span style="color: #8ec07c;">%Artist</span>{}
+  |&gt; cast(params, [<span style="color: #83a598;">:name</span>])
+  |&gt; validate_required([<span style="color: #83a598;">:name</span>])
+
+<span style="color: #fb4934;">case</span> <span style="color: #8ec07c;">Repo</span>.insert(changeset) <span style="color: #fb4934;">do</span>
+  {<span style="color: #83a598;">:ok</span>, artist} -&gt; <span style="color: #8ec07c;">IO</span>.puts(<span style="color: #b8bb26;">"Record for </span><span style="color: #83a598;">#{artist.name}</span><span style="color: #b8bb26;"> was created."</span>)
+  {<span style="color: #83a598;">:error</span>, changeset} -&gt; <span style="color: #8ec07c;">IO</span>.inspect(changeset.errors)
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+<p>
+Couple of reasons why this works:
+</p>
+<ul class="org-ul">
+<li>if changeset sees that there are errors, it won&rsquo;t even bother with talking to database</li>
+<li>it&rsquo;s possible that database will catch a problem with your data that you forgot to write a validation for</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org826b97e" class="outline-4">
+<h4 id="org826b97e"><span class="section-number-4">1.9.4</span> Using changeset when not working with database</h4>
+<div class="outline-text-4" id="text-1-9-4">
+<p>
+We can leverage the casting, filtering and validation features of
+changesets, even if the data is not being persisted in a database.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"artist_name"</span> =&gt; <span style="color: #b8bb26;">"Ella Fitzgerald"</span>, <span style="color: #b8bb26;">"album_title"</span> =&gt; <span style="color: #b8bb26;">""</span>,
+           <span style="color: #b8bb26;">"artist_birth_date"</span> =&gt; <span style="color: #b8bb26;">""</span>,  <span style="color: #b8bb26;">"album_release_date"</span> =&gt; <span style="color: #b8bb26;">""</span>,
+           <span style="color: #b8bb26;">"genre"</span> =&gt; <span style="color: #b8bb26;">""</span>}
+
+<span style="color: #83a598;">changeset</span> =
+{%{}, form}
+|&gt; cast(params, <span style="color: #8ec07c;">Map</span>.keys(form))
+|&gt; validate_in_the_past(<span style="color: #83a598;">:artist_birth_date</span>)
+|&gt; validate_in_the_past(<span style="color: #83a598;">:album_release_date</span>)
+
+<span style="color: #fb4934;">if</span> changeset.valid? <span style="color: #fb4934;">do</span>
+  <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">execute the advanced search</span>
+<span style="color: #fb4934;">else</span>
+  <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">show changeset.errors to the user</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org487ec64" class="outline-4">
+<h4 id="org487ec64"><span class="section-number-4">1.9.5</span> Associations</h4>
+<div class="outline-text-4" id="text-1-9-5">
+</div>
+<div id="outline-container-org321536d" class="outline-5">
+<h5 id="org321536d"><span class="section-number-5">1.9.5.1</span> When we need to add new associated record</h5>
+<div class="outline-text-5" id="text-1-9-5-1">
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #83a598;">artist</span> = <span style="color: #8ec07c;">Repo</span>.get_by(<span style="color: #8ec07c;">Artist</span>, <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Miles Davis"</span>)
+<span style="color: #83a598;">album</span> = <span style="color: #8ec07c;">Ecto</span>.build_assoc(artist, <span style="color: #83a598;">:albums</span>, <span style="color: #83a598;">title:</span> <span style="color: #b8bb26;">"Miles Ahead"</span>)
+<span style="color: #8ec07c;">Repo</span>.insert(album)
+<span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; {:ok, %MusicDB.Album{id: 6, title: "Miles Ahead", artist_id: 1, ...}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge27d981" class="outline-5">
+<h5 id="orge27d981"><span class="section-number-5">1.9.5.2</span> When working with individual records of association</h5>
+<div class="outline-text-5" id="text-1-9-5-2">
+<p>
+It&rsquo;s usually easisest to work with the child record separate from the
+parent record. <code>build_assoc</code> can help you create new child record for a
+given parent record, and you can perform updates and deletes by loading
+the child record and using the update and delete functions provided by
+<code>Repo</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb2e849a" class="outline-5">
+<h5 id="orgb2e849a"><span class="section-number-5">1.9.5.3</span> When working with collection at once</h5>
+<div class="outline-text-5" id="text-1-9-5-3">
+<p>
+You&rsquo;ll need to think about what you want to do with records that are
+removed or replaced when the collection is updated (should they be
+nullified, deleted etc.).
+</p>
+
+<p>
+If data is comming from external source, you&rsquo;ll want to use <code>cast_assoc</code>.
+Or you can use changesets to create/update/delete the child records on
+their own, then use <code>put_assoc</code> in a separate changeset to update the
+collection on the parent record. This is often a great way to work with
+many-to-many associations.
+</p>
+
+<p>
+If data is comming from your application, you&rsquo;ll want to use <code>put_assoc</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org167871d" class="outline-3">
+<h3 id="org167871d"><span class="section-number-3">1.10</span> Transactions</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+If we want transation to roll back, we must call functions that raise exception, like <code>insert!</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org2510741" class="outline-3">
+<h3 id="org2510741"><span class="section-number-3">1.11</span> Repo</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+Repo is just a simple Elixir module, so we can extend it with functions that would be useful in future use:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir"><span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">DottedLine.Repo</span> <span style="color: #fb4934;">do</span>
+  <span style="color: #fb4934;">use</span> <span style="color: #8ec07c;">Ecto.Repo</span>,
+    <span style="color: #83a598;">otp_app:</span> <span style="color: #83a598;">:dotted_line</span>,
+    <span style="color: #83a598;">adapter:</span> <span style="color: #8ec07c;">Ecto.Adapters.Postgres</span>
+
+  <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">count</span>(table) <span style="color: #fb4934;">do</span>
+    aggregate(table, <span style="color: #83a598;">:count</span>, <span style="color: #83a598;">:id</span>)
+  <span style="color: #fb4934;">end</span>
+<span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7db68ca" class="outline-3">
+<h3 id="org7db68ca"><span class="section-number-3">1.12</span> N+1 Query problem</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+You need one query to fetch the parent recoreds, then <code>N</code> more quries to
+fetchthe child recoreds.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org024623c" class="outline-2">
+<h2 id="org024623c"><span class="section-number-2">2</span> Cheatsheet</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgbdd0b75" class="outline-3">
+<h3 id="orgbdd0b75"><span class="section-number-3">2.1</span> Mix</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+mix ecto.create = create database
+mix ecto.migrate = run migration
+mix  run priv/repo/seeds.exs = run seed script
+</p>
+</div>
+</div>
+<div id="outline-container-org286a595" class="outline-3">
+<h3 id="org286a595"><span class="section-number-3">2.2</span> Configuration</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">repo.ex</span>
+      <span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">DottedLine.Repo</span> <span style="color: #fb4934;">do</span>
+        <span style="color: #fb4934;">use</span> <span style="color: #8ec07c;">Ecto.Repo</span>,
+          <span style="color: #83a598;">otp_app:</span> <span style="color: #83a598;">:dotted_line</span>,
+          <span style="color: #83a598;">adapter:</span> <span style="color: #8ec07c;">Ecto.Adapters.Postgres</span>
+      <span style="color: #fb4934;">end</span>
+
+      <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">config/dev.exs</span>
+      config <span style="color: #83a598;">:dotted_line</span>, <span style="color: #8ec07c;">DottedLine.Repo</span>,
+        <span style="color: #83a598;">username:</span> <span style="color: #b8bb26;">"postgres"</span>,
+        <span style="color: #83a598;">password:</span> <span style="color: #b8bb26;">"postgres"</span>,
+        <span style="color: #83a598;">database:</span> <span style="color: #b8bb26;">"dotted_line_dev"</span>,
+        <span style="color: #83a598;">hostname:</span> <span style="color: #b8bb26;">"localhost"</span>,
+        <span style="color: #83a598;">pool_size:</span> <span style="color: #d3869b; font-weight: bold;">10</span>,
+        <span style="color: #83a598;">migration_timestamps:</span> [<span style="color: #83a598;">type:</span> <span style="color: #83a598;">:utc_datetime</span>]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd6eee5b" class="outline-3">
+<h3 id="orgd6eee5b"><span class="section-number-3">2.3</span> Changesets</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org5808971" class="outline-4">
+<h4 id="org5808971"><span class="section-number-4">2.3.1</span> What should be treated as nil</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<div class="org-src-container">
+<pre class="src src-elixir">       <span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"Charlie Parker"</span>, <span style="color: #b8bb26;">"birth_date"</span> =&gt; <span style="color: #b8bb26;">"NULL"</span>}
+       <span style="color: #83a598;">changeset</span> = cast(<span style="color: #8ec07c;">%Artist</span>{}, params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>],
+         <span style="color: #83a598;">empty_values:</span> [<span style="color: #b8bb26;">""</span>, <span style="color: #b8bb26;">"NULL"</span>])
+       changeset.changes
+       <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; %{name: "Charlie Parker"}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7f5ac16" class="outline-4">
+<h4 id="org7f5ac16"><span class="section-number-4">2.3.2</span> Validation</h4>
+<div class="outline-text-4" id="text-2-3-2">
+</div>
+<div id="outline-container-orga7df56a" class="outline-5">
+<h5 id="orga7df56a"><span class="section-number-5">2.3.2.1</span> Validating</h5>
+<div class="outline-text-5" id="text-2-3-2-1">
+<div class="org-src-container">
+<pre class="src src-elixir">        <span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"x"</span>}
+        <span style="color: #83a598;">changeset</span> =
+          <span style="color: #8ec07c;">%Artist</span>{}
+          |&gt; cast(params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+          |&gt; validate_required([<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+          |&gt; validate_length(<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">min:</span> <span style="color: #d3869b; font-weight: bold;">3</span>)
+          |&gt; unique_constraint(<span style="color: #83a598;">:name</span>) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">executed only when talking to Repo, will not show up in changeset.errors</span>
+          |&gt; unsafe_validate_unique(<span style="color: #83a598;">:name</span>) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">talk with database, and will show up in changeset.errors</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8ade94" class="outline-5">
+<h5 id="orgc8ade94"><span class="section-number-5">2.3.2.2</span> Custom validation</h5>
+<div class="outline-text-5" id="text-2-3-2-2">
+<div class="org-src-container">
+<pre class="src src-elixir">        <span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">CustomValidations</span> <span style="color: #fb4934;">do</span>
+          <span style="color: #fb4934;">import</span> <span style="color: #8ec07c;">Ecto.Changeset</span>
+
+          <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">validate_in_the_past</span>(changeset, field) <span style="color: #fb4934;">do</span>
+            validate_change(changeset, field, <span style="color: #fb4934;">fn</span> <span style="color: #7c6f64;">_field</span>, value -&gt;
+              <span style="color: #fb4934;">cond</span> <span style="color: #fb4934;">do</span>
+                is_nil(value) -&gt; []
+                <span style="color: #8ec07c;">Date</span>.compare(value, <span style="color: #8ec07c;">Date</span>.utc_today()) == <span style="color: #83a598;">:lt</span> -&gt; []
+                <span style="color: #83a598;">true</span> -&gt; [{field, <span style="color: #b8bb26;">"must be in the past"</span>}]
+              <span style="color: #fb4934;">end</span>
+            <span style="color: #fb4934;">end</span>)
+          <span style="color: #fb4934;">end</span>
+
+          <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">test_validation</span> <span style="color: #fb4934;">do</span>
+            <span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"Thelonius Monk"</span>, <span style="color: #b8bb26;">"birth_date"</span> =&gt; <span style="color: #b8bb26;">"2117-10-10"</span>}
+            <span style="color: #83a598;">changeset</span> =
+              <span style="color: #8ec07c;">%Artist</span>{}
+              |&gt; cast(params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+              |&gt; validate_required(<span style="color: #83a598;">:name</span>)
+              |&gt; validate_in_the_past(<span style="color: #83a598;">:birth_date</span>)
+          <span style="color: #fb4934;">end</span>
+
+        <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org50876e4" class="outline-5">
+<h5 id="org50876e4"><span class="section-number-5">2.3.2.3</span> Get error messages in a nicer map form</h5>
+<div class="outline-text-5" id="text-2-3-2-3">
+<div class="org-src-container">
+<pre class="src src-elixir">        <span style="color: #83a598;">result</span> =
+          traverse_errors(changeset, <span style="color: #fb4934;">fn</span> {msg, opts} -&gt;
+            <span style="color: #8ec07c;">Enum</span>.reduce(opts, msg, <span style="color: #fb4934;">fn</span> {key, value}, acc -&gt;
+              <span style="color: #8ec07c;">String</span>.replace(acc, <span style="color: #b8bb26;">"%{</span><span style="color: #83a598;">#{key}</span><span style="color: #b8bb26;">}"</span>, to_string(value))
+            <span style="color: #fb4934;">end</span>)
+          <span style="color: #fb4934;">end</span>)
+        <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; %{birth_date: ["can't be blank"],</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga69ba79" class="outline-5">
+<h5 id="orga69ba79"><span class="section-number-5">2.3.2.4</span> Perform constraint with validations, so it&rsquo;s showed up in changeset.errors</h5>
+<div class="outline-text-5" id="text-2-3-2-4">
+<div class="org-src-container">
+<pre class="src src-elixir">        <span style="color: #83a598;">params</span> = %{<span style="color: #b8bb26;">"name"</span> =&gt; <span style="color: #b8bb26;">"x"</span>}
+        <span style="color: #83a598;">changeset</span> =
+          <span style="color: #8ec07c;">%Artist</span>{}
+          |&gt; cast(params, [<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+          |&gt; validate_required([<span style="color: #83a598;">:name</span>, <span style="color: #83a598;">:birth_date</span>])
+          |&gt; unsafe_validate_unique(<span style="color: #83a598;">:name</span>) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">talk with database, and will show up in changeset.errors</span>
+      <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">+end_srcion</span>
+    <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">+begin_src elixir</span>
+      <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">repo.ex</span>
+      <span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">DottedLine.Repo</span> <span style="color: #fb4934;">do</span>
+        <span style="color: #fb4934;">use</span> <span style="color: #8ec07c;">Ecto.Repo</span>,
+          <span style="color: #83a598;">otp_app:</span> <span style="color: #83a598;">:dotted_line</span>,
+          <span style="color: #83a598;">adapter:</span> <span style="color: #8ec07c;">Ecto.Adapters.Postgres</span>
+      <span style="color: #fb4934;">end</span>
+
+      <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">config/dev.exs</span>
+      config <span style="color: #83a598;">:dotted_line</span>, <span style="color: #8ec07c;">DottedLine.Repo</span>,
+        <span style="color: #83a598;">username:</span> <span style="color: #b8bb26;">"postgres"</span>,
+        <span style="color: #83a598;">password:</span> <span style="color: #b8bb26;">"postgres"</span>,
+        <span style="color: #83a598;">database:</span> <span style="color: #b8bb26;">"dotted_line_dev"</span>,
+        <span style="color: #83a598;">hostname:</span> <span style="color: #b8bb26;">"localhost"</span>,
+        <span style="color: #83a598;">pool_size:</span> <span style="color: #d3869b; font-weight: bold;">10</span>,
+        <span style="color: #83a598;">migration_timestamps:</span> [<span style="color: #83a598;">type:</span> <span style="color: #83a598;">:utc_datetime</span>]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org01e71d4" class="outline-3">
+<h3 id="org01e71d4"><span class="section-number-3">2.4</span> Insert new record</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">params</span> = %{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Gene Harris"</span>}
+      <span style="color: #83a598;">changeset</span> =
+        <span style="color: #8ec07c;">%Artist</span>{}
+        |&gt; cast(params, [<span style="color: #83a598;">:name</span>])
+        |&gt; validate_required([<span style="color: #83a598;">:name</span>])
+
+      <span style="color: #fb4934;">case</span> <span style="color: #8ec07c;">Repo</span>.insert(changeset) <span style="color: #fb4934;">do</span>
+        {<span style="color: #83a598;">:ok</span>, artist} -&gt; <span style="color: #8ec07c;">IO</span>.puts(<span style="color: #b8bb26;">"Record for </span><span style="color: #83a598;">#{artist.name}</span><span style="color: #b8bb26;"> was created."</span>)
+        {<span style="color: #83a598;">:error</span>, changeset} -&gt; <span style="color: #8ec07c;">IO</span>.inspect(changeset.errors)
+      <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b57a42" class="outline-3">
+<h3 id="org7b57a42"><span class="section-number-3">2.5</span> Group and Having</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Get all albums whose sum of tracks duration is larger than 3600:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">q</span> = from t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>, <span style="color: #83a598;">select:</span> [t.album_id, sum(t.duration)],
+        <span style="color: #83a598;">group_by:</span> t.album_id,
+        <span style="color: #83a598;">having:</span> sum(t.duration) &gt; <span style="color: #d3869b; font-weight: bold;">3600</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org084849d" class="outline-3">
+<h3 id="org084849d"><span class="section-number-3">2.6</span> Inserting parent and child</h3>
+<div class="outline-text-3" id="text-2-6">
+<div class="org-src-container">
+<pre class="src src-elixir">       <span style="color: #8ec07c;">Repo</span>.insert(
+         <span style="color: #8ec07c;">%Artist</span>{
+           <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"John Coltraine"</span>,
+           <span style="color: #83a598;">albums:</span> [
+             <span style="color: #8ec07c;">%Album</span>{
+               <span style="color: #83a598;">title:</span> <span style="color: #b8bb26;">"A love supreme"</span>
+             }
+           ]
+         }
+       )
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7dbe358" class="outline-3">
+<h3 id="org7dbe358"><span class="section-number-3">2.7</span> Adding associated record</h3>
+<div class="outline-text-3" id="text-2-7">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">artist</span> = <span style="color: #8ec07c;">Repo</span>.get_by(<span style="color: #8ec07c;">Artist</span>, <span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Miles Davis"</span>)
+      <span style="color: #83a598;">album</span> = <span style="color: #8ec07c;">Ecto</span>.build_assoc(artist, <span style="color: #83a598;">:albums</span>, <span style="color: #83a598;">title:</span> <span style="color: #b8bb26;">"Miles Ahead"</span>)
+      <span style="color: #8ec07c;">Repo</span>.insert(album)
+      <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; {:ok, %MusicDB.Album{id: 6, title: "Miles Ahead", artist_id: 1, ...}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf1fdc31" class="outline-3">
+<h3 id="orgf1fdc31"><span class="section-number-3">2.8</span> Nested association</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+Let&rsquo;s say Artist have many Albums, and Album have many Tracks. If we want to access all tracks directly from artist, we would use nested association:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">      schema <span style="color: #b8bb26;">"artists"</span> <span style="color: #fb4934;">do</span>
+        has_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>
+        has_many <span style="color: #83a598;">:tracks</span>, <span style="color: #83a598;">through:</span> [<span style="color: #83a598;">:albums</span>, <span style="color: #83a598;">:tracks</span>]
+      <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7de9e93" class="outline-3">
+<h3 id="org7de9e93"><span class="section-number-3">2.9</span> M:N</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+If we need to add extra data to linking table, we need to explicitly add
+schema for it:
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">       schema <span style="color: #b8bb26;">"albums"</span> <span style="color: #fb4934;">do</span>
+         many_to_many <span style="color: #83a598;">:genres</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #8ec07c;">MusicDB.AlbumGenre</span>
+       <span style="color: #fb4934;">end</span>
+
+       schema <span style="color: #b8bb26;">"genres"</span> <span style="color: #fb4934;">do</span>
+         many_to_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #8ec07c;">MusicDB.AlbumGenre</span>
+       <span style="color: #fb4934;">end</span>
+
+       schema <span style="color: #b8bb26;">"albums_genres"</span> <span style="color: #fb4934;">do</span>
+         <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">extra fields definitions</span>
+         belongs_to <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>
+         belongs_to <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>
+</pre>
+</div>
+<p>
+Otherwise, we can just use string.
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">       schema <span style="color: #b8bb26;">"albums"</span> <span style="color: #fb4934;">do</span>
+         many_to_many <span style="color: #83a598;">:genres</span>, <span style="color: #8ec07c;">MusicDB.Genre</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #b8bb26;">"albums_genre"</span>
+       <span style="color: #fb4934;">end</span>
+
+       schema <span style="color: #b8bb26;">"genres"</span> <span style="color: #fb4934;">do</span>
+         many_to_many <span style="color: #83a598;">:albums</span>, <span style="color: #8ec07c;">MusicDB.Album</span>, <span style="color: #83a598;">join_through:</span> <span style="color: #b8bb26;">"albums_genre"</span>
+       <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org75f488e" class="outline-3">
+<h3 id="org75f488e"><span class="section-number-3">2.10</span> Preloading associations</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+Two trips to database:
+</p>
+<ol class="org-ol">
+<li>Get all albums</li>
+<li>Get all tracks</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">albums</span> = <span style="color: #8ec07c;">Repo</span>.all(from a <span style="color: #fb4934;">in</span> <span style="color: #8ec07c;">Album</span>, <span style="color: #83a598;">preload:</span> <span style="color: #83a598;">:tracks</span>)
+</pre>
+</div>
+<p>
+One trip to dabase (with limit):
+</p>
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">q</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #8ec07c;">Album</span>,
+        <span style="color: #83a598;">join:</span> t <span style="color: #fb4934;">in</span> assoc(a, <span style="color: #83a598;">:tracks</span>),
+        <span style="color: #83a598;">where:</span> t.title == <span style="color: #b8bb26;">"Freddie Freeloader"</span>,
+        <span style="color: #83a598;">preload:</span> [<span style="color: #83a598;">tracks:</span> t]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0c3714" class="outline-3">
+<h3 id="orgc0c3714"><span class="section-number-3">2.11</span> Transaction</h3>
+<div class="outline-text-3" id="text-2-11">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">result</span> = (<span style="color: #fb4934;">fn</span> -&gt;
+        <span style="color: #83a598;">artist</span> = <span style="color: #8ec07c;">%Artist</span>{<span style="color: #83a598;">name:</span> <span style="color: #b8bb26;">"Johnny Hodges"</span>}
+        <span style="color: #8ec07c;">Repo</span>.transaction(<span style="color: #fb4934;">fn</span> -&gt;
+          <span style="color: #8ec07c;">Repo</span>.insert!(artist)
+          <span style="color: #8ec07c;">Repo</span>.insert!(<span style="color: #8ec07c;">Log</span>.changeset_for_insert(artist))
+        <span style="color: #fb4934;">end</span>)
+        <span style="color: #7c6f64;">#</span><span style="color: #7c6f64;">=&gt; {:ok, %MusicDB.Log{ ...}}</span>
+      <span style="color: #fb4934;">end</span>).()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd3c9d16" class="outline-3">
+<h3 id="orgd3c9d16"><span class="section-number-3">2.12</span> Executing Raw SQL</h3>
+<div class="outline-text-3" id="text-2-12">
+</div>
+<div id="outline-container-org2d33bbe" class="outline-4">
+<h4 id="org2d33bbe"><span class="section-number-4">2.12.1</span> Whole SQL as raw SQL</h4>
+<div class="outline-text-4" id="text-2-12-1">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #8ec07c;">Repo</span>.query(<span style="color: #b8bb26;">"select * from artists where id=1"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd44c8ad" class="outline-4">
+<h4 id="orgd44c8ad"><span class="section-number-4">2.12.2</span> Just fragment as raw SQL</h4>
+<div class="outline-text-4" id="text-2-12-2">
+<div class="org-src-container">
+<pre class="src src-elixir">       <span style="color: #83a598;">q</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>,
+        <span style="color: #83a598;">where:</span> fragment(<span style="color: #b8bb26;">"lower(?)"</span>, a.name) == <span style="color: #b8bb26;">"miles davis"</span>,
+        <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc71463f" class="outline-3">
+<h3 id="orgc71463f"><span class="section-number-3">2.13</span> Extending Repo</h3>
+<div class="outline-text-3" id="text-2-13">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #fb4934;">defmodule</span> <span style="color: #8ec07c;">DottedLine.Repo</span> <span style="color: #fb4934;">do</span>
+        <span style="color: #fb4934;">use</span> <span style="color: #8ec07c;">Ecto.Repo</span>,
+          <span style="color: #83a598;">otp_app:</span> <span style="color: #83a598;">:dotted_line</span>,
+          <span style="color: #83a598;">adapter:</span> <span style="color: #8ec07c;">Ecto.Adapters.Postgres</span>
+
+        <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">count</span>(table) <span style="color: #fb4934;">do</span>
+          aggregate(table, <span style="color: #83a598;">:count</span>, <span style="color: #83a598;">:id</span>)
+        <span style="color: #fb4934;">end</span>
+      <span style="color: #fb4934;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga50acfe" class="outline-3">
+<h3 id="orga50acfe"><span class="section-number-3">2.14</span> Preview generated SQL</h3>
+<div class="outline-text-3" id="text-2-14">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">query</span> = from <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:name</span>]
+      <span style="color: #8ec07c;">Ecto.Adapters.SQL</span>.to_sql(<span style="color: #83a598;">:all</span>, <span style="color: #8ec07c;">Repo</span>, query) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">way 1</span>
+      <span style="color: #8ec07c;">Repo</span>.to_sql(<span style="color: #83a598;">:all</span>, query) <span style="color: #7c6f64;"># </span><span style="color: #7c6f64;">way 2</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e5c207" class="outline-3">
+<h3 id="org6e5c207"><span class="section-number-3">2.15</span> Using an expression in query</h3>
+<div class="outline-text-3" id="text-2-15">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">q</span> = from <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">where:</span> [<span style="color: #83a598;">name:</span> ^artist_name], <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+      <span style="color: #83a598;">q</span> = from <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">where:</span> [<span style="color: #83a598;">name:</span> ^(<span style="color: #b8bb26;">"Bill"</span> &lt;&gt; <span style="color: #b8bb26;">"Evans"</span>], <span style="color: #83a598;">select:</span> [<span style="color: #83a598;">:id</span>, <span style="color: #83a598;">:name</span>]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org57c3231" class="outline-3">
+<h3 id="org57c3231"><span class="section-number-3">2.16</span> Combining results</h3>
+<div class="outline-text-3" id="text-2-16">
+</div>
+<div id="outline-container-org67d242e" class="outline-4">
+<h4 id="org67d242e"><span class="section-number-4">2.16.1</span> Union (without duplicates)</h4>
+<div class="outline-text-4" id="text-2-16-1">
+<div class="org-src-container">
+<pre class="src src-elixir">       <span style="color: #83a598;">tracks_query</span> = from t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>, <span style="color: #83a598;">select:</span> t.title
+       <span style="color: #83a598;">union_query</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"albums"</span>, <span style="color: #83a598;">select:</span> t.title, <span style="color: #83a598;">union:</span> ^tracks_query
+       <span style="color: #8ec07c;">Repo</span>.all(union_query)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8a018d7" class="outline-4">
+<h4 id="org8a018d7"><span class="section-number-4">2.16.2</span> Union (with duplicates)</h4>
+<div class="outline-text-4" id="text-2-16-2">
+<div class="org-src-container">
+<pre class="src src-elixir">       <span style="color: #83a598;">tracks_query</span> = from t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>, <span style="color: #83a598;">select:</span> t.title
+       <span style="color: #83a598;">union_query</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"albums"</span>, <span style="color: #83a598;">select:</span> t.title, <span style="color: #83a598;">union_all:</span> ^tracks_query
+       <span style="color: #8ec07c;">Repo</span>.all(union_query)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org504d27e" class="outline-3">
+<h3 id="org504d27e"><span class="section-number-3">2.17</span> Returning result as list of maps</h3>
+<div class="outline-text-3" id="text-2-17">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">q</span> = from t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>,
+        <span style="color: #83a598;">join:</span> a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"albums"</span>, <span style="color: #83a598;">on:</span> t.album_id == a.id,
+        <span style="color: #83a598;">where:</span> t.duration &gt; <span style="color: #d3869b; font-weight: bold;">900</span>,
+        <span style="color: #83a598;">select:</span> %{<span style="color: #83a598;">album:</span> a.title, <span style="color: #83a598;">track:</span> t.title}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org12d06ff" class="outline-3">
+<h3 id="org12d06ff"><span class="section-number-3">2.18</span> Composing queries</h3>
+<div class="outline-text-3" id="text-2-18">
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #83a598;">albums_by_miles</span> = from a <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"albums"</span>, <span style="color: #83a598;">as:</span> <span style="color: #83a598;">:albums</span>,
+        <span style="color: #83a598;">join:</span> ar <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>, as <span style="color: #83a598;">:artists</span>,
+        <span style="color: #83a598;">on:</span> a.artist_id == ar.id, <span style="color: #83a598;">where:</span> ar.name == <span style="color: #b8bb26;">"Miles Davis"</span>
+
+      <span style="color: #83a598;">album_query</span> = from [<span style="color: #83a598;">artists:</span> ar, albums, a] <span style="color: #fb4934;">in</span> albums_by_miles,
+        <span style="color: #83a598;">select:</span> [a.title, ar.name]
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elixir">      <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">by_artist</span>(query, artist_name) <span style="color: #fb4934;">do</span>
+        from a <span style="color: #fb4934;">in</span> query,
+          <span style="color: #83a598;">join:</span> ar <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"artists"</span>, <span style="color: #83a598;">on:</span> a.artist_id == ar.id,
+          <span style="color: #83a598;">where:</span> ar.name == ^artist_name
+      <span style="color: #fb4934;">end</span>
+
+      <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">with_tracks_longer_than</span>(query, duration) <span style="color: #fb4934;">do</span>
+        fron a <span style="color: #fb4934;">in</span> query,
+          <span style="color: #83a598;">join:</span> t <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"tracks"</span>, <span style="color: #83a598;">on:</span> t.album_id == a.id,
+          <span style="color: #83a598;">where:</span> t.duration &gt; ^duration,
+          distinct:true
+      <span style="color: #fb4934;">end</span>
+
+      <span style="color: #fb4934;">def</span> <span style="color: #8ec07c;">title_only</span>(query) <span style="color: #fb4934;">do</span>
+        from a <span style="color: #fb4934;">in</span> query, <span style="color: #83a598;">select:</span> a.title
+      <span style="color: #fb4934;">end</span>
+
+      <span style="color: #83a598;">q</span> = <span style="color: #b8bb26;">"albums"</span>
+      |&gt; by_artist(<span style="color: #b8bb26;">"Miles Davis"</span>)
+      |&gt; with_tracks_longer_than(<span style="color: #d3869b; font-weight: bold;">720</span>)
+      |&gt; title_only
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Bojan Petrovic</p>
+<p class="date">Created: 2020-03-11 Wed 09:11</p>
+</div>
+</body>
+</html>
